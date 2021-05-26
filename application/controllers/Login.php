@@ -11,15 +11,17 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$nama=$this->session->userdata("nama");
-		if($nama==NULL){
-			$this->load->view('header');
-			$this->load->view('login');
-		}else{
-			$this->load->view('header');
-			$this->load->view('login');
-		}
-		$this->load->view('footer');
+		$this->load->view('login');
+
+		// $nama=$this->session->userdata("nama");
+		// if($nama==NULL){
+		// 	$this->load->view('header');
+		// 	$this->load->view('login');
+		// }else{
+		// 	$this->load->view('header');
+		// 	$this->load->view('login');
+		// }
+		// $this->load->view('footer');
 	}
 
 	public function regis()

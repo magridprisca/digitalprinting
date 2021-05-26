@@ -12,13 +12,14 @@ class Admin extends CI_Controller {
 
     public function index()
     {
-        $datauser = $this->auth_model->get_datauser($this->session->userdata('username'));
-        $data = [
-            'datauser' => $datauser,
-        ];
-        $this->load->view('header_admin');
-        $this->load->view('user-profile',$data);
-        $this->load->view('footer');
+        // $datauser = $this->auth_model->get_datauser($this->session->userdata('username'));
+        // $data = [
+        //     'datauser' => $datauser,
+        // ];
+        // $this->load->view('header_admin');
+        // $this->load->view('user-profile',$data);
+        // $this->load->view('footer');
+        $this->load->view('dashboard');
     }
 
 } 
