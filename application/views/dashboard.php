@@ -1,4 +1,4 @@
-            <?php $this->load->view('admin/header');?>
+            <?php $this->load->view('header');?>
 			<!-- PAGE CONTENT -->
             <div class="page-content">
                 
@@ -120,4 +120,4 @@
                 <!-- END PAGE CONTENT WRAPPER -->                                
             </div>            
             <!-- END PAGE CONTENT -->
-			<?php $this->load->view('admin/footer');?>
+			<?php $this->load->view('footer');?>
