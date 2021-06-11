@@ -61,7 +61,7 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/pengeluaran/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
+                           <li><a href="<?=base_url()?>index.php/Admin/view_user"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
                            <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
                         </ul>
                     </li>

@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->cek_sesi();
         $this->load->model('auth_model');
+        $this->load->model('user_model');
     }
 
     public function index()
@@ -20,6 +21,15 @@ class Admin extends CI_Controller {
         // $this->load->view('user-profile',$data);
         // $this->load->view('footer');
         $this->load->view('dashboard');
+    }
+
+    public function view_user(){
+        $datauser = $this->user_model->getAll();
+        $data = [
+            'datauser' => $datauser,
+        ];
+        $this->load->view('list_user',$data);
+
     }
 
 } 
