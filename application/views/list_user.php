@@ -1,4 +1,4 @@
-            <?php $this->load->view('admin/header');?>
+            <?php $this->load->view('header');?>
 			<script>
 			function doconfirm()
 			{
@@ -42,7 +42,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Dashboard</li>
+                    <li class="active">List User</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
@@ -94,4 +94,4 @@
                 <!-- END PAGE CONTENT WRAPPER -->                                
             </div>            
             <!-- END PAGE CONTENT -->
-			<?php $this->load->view('admin/footer');?>
+			<?php $this->load->view('footer');?>

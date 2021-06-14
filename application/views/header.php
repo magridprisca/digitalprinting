@@ -56,13 +56,13 @@
                     </li>
                     <li class="xn-title">Menu</li>
                     <li class="active">
-                        <a href="<?=site_url()?>/admin/dashboard"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                        <a href="<?=site_url()?>/Admin"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User</span></a>
                         <ul>
-                           <li><a href="<?=base_url()?>index.php/Admin/view_user"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
-                           <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
+                           <li><a href="<?=site_url()?>/Admin/add_user"><span class="fa fa-arrows-h"></span> Tambah User</a></li>
+                           <li><a href="<?=site_url()?>/Admin/view_user"><span class="fa fa-list-ul"></span> List User</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">

@@ -31,5 +31,11 @@ class Admin extends CI_Controller {
         $this->load->view('list_user',$data);
 
     }
+    
+    public function add_user(){
+        
+        $this->load->view('tambah_user');
+
+    }
 
 } 
