@@ -68,8 +68,8 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Karyawan</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/pengeluaran/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
-                           <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
+                           <li><a href="<?=site_url()?>/Admin/add_karyawan"><span class="fa fa-arrows-h"></span> Tambah Karyawan</a></li>
+                           <li><a href="<?=site_url()?>/Admin/view_karyawan"><span class="fa fa-list-ul"></span> List Karyawan</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -82,15 +82,15 @@
 					 <li class="xn-openable">
                         <a href="#"><span class="fa fa-arrow-down"></span> <span class="xn-text">Data Barang Masuk</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/admin/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Admin</a></li>
-                           <li><a href="<?=site_url()?>/admin/adminpage"><span class="fa fa-list-ul"></span> List Admin</a></li>
+                           <li><a href="<?=site_url()?>/Admin/add_barang"><span class="fa fa-arrows-h"></span> Tambah Barang</a></li>
+                           <li><a href="<?=site_url()?>/Admin/view_barang"><span class="fa fa-list-ul"></span> List Barang</a></li>
                         </ul>
                     </li>
 					 <li class="xn-openable">
                         <a href="#"><span class="fa fa-table"></span> <span class="xn-text">Stok Barang</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/skpd/tambahpage"><span class="fa fa-arrows-h"></span> Tambah SKPD</a></li>
-                           <li><a href="<?=site_url()?>/skpd/skpdpage"><span class="fa fa-list-ul"></span> List SKPD</a></li>
+                           <li><a href="<?=site_url()?>/Admin/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li>
+                           <li><a href="<?=site_url()?>/Admin/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
                         </ul>
                     </li>
 					<li>
