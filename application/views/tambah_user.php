@@ -66,7 +66,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="admin_nama" class="form-control"/>
+                                                <input type="text" name="nama" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Nama Lengkap</span>
                                         </div>
@@ -76,7 +76,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="email" name="admin_email" class="form-control"/>
+                                                <input type="email" name="email" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Email Valid</span>
                                         </div>
@@ -87,7 +87,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="password" name="admin_password" class="form-control"/>
+                                                <input type="password" name="password" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Gunakan Password yang mudah diingat</span>
                                         </div>
@@ -97,10 +97,10 @@
                                         <label class="col-md-3 col-xs-12 control-label">Level</label>
                                         <div class="col-md-6 col-xs-12">   
                                             <select name="level" class="select">
-                                                <option>Admin</option>
-                                                <option>User</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="User">User</option>
                                             </select>
-                                            <span class="help-block">Nama Anda</span>
+                                            <span class="help-block">Jenis Login</span>
                                         </div>
                                     </div>
 								 
