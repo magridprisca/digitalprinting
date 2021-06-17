@@ -68,8 +68,8 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Karyawan</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/Admin/add_karyawan"><span class="fa fa-arrows-h"></span> Tambah Karyawan</a></li>
-                           <li><a href="<?=site_url()?>/Admin/view_karyawan"><span class="fa fa-list-ul"></span> List Karyawan</a></li>
+                           <li><a href="<?=site_url()?>/Karyawan/add_karyawan"><span class="fa fa-arrows-h"></span> Tambah Karyawan</a></li>
+                           <li><a href="<?=site_url()?>/Karyawan/view_karyawan"><span class="fa fa-list-ul"></span> List Karyawan</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -89,8 +89,8 @@
 					 <li class="xn-openable">
                         <a href="#"><span class="fa fa-table"></span> <span class="xn-text">Stok Barang</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/Admin/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li>
-                           <li><a href="<?=site_url()?>/Admin/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
+                           <li><a href="<?=site_url()?>/Stok/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li>
+                           <li><a href="<?=site_url()?>/Stok/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
                         </ul>
                     </li>
 					<li>
