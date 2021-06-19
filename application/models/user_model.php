@@ -24,15 +24,15 @@ class User_model extends CI_Model{
 		}
 	}
     public function create($data){
-        $this->db->insert('tb_user', $data);
+        return $this->db->insert('tb_user', $data);
     }
     public function update($id, $data){
         $row = $this->db->where('username',$id)->get('tb_user')->row();
         // unlink($row->userPhoto);
-        $this->db->where('username',$id)->update('tb_user',$data);
+        return $this->db->where('username',$id)->update('tb_user',$data);
     }
     public function delete($id){
-        $this->db->where('username',$id)->delete('tb_user');
+        return $this->db->where('username',$id)->delete('tb_user');
     }
     public function findDetail($id){
         $hasil = $this->db->where('username=',$id)->limit(1)->get('tb_user');

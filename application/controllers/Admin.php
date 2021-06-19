@@ -69,10 +69,10 @@ class Admin extends CI_Controller {
 			];
 			$insert = $this->user_model->create($data);
 			if($insert){
-                redirect('Admin/view_user');
-				// echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="'.site_url('/Admin/view_user').'";</script>';
+                // redirect('Admin/view_user');
+				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Admin/view_user').'";</script>';
 			}else{
-                echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="'.site_url('/Admin/add_user').'";</script>';
+                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Admin/add_user').'";</script>';
             }
 		}
     }
@@ -80,7 +80,43 @@ class Admin extends CI_Controller {
     function del_user($username){
         $insert = $this->user_model->delete($username);
         redirect('Admin/view_user');
+    }
 
+    public function update_user($username){
+        $datauser = $this->user_model->findDetail($username);
+        $data = [
+            'datauser' => $datauser,
+        ];
+        $this->load->view('edit_user',$data);
+    }
+    
+    public function update_process(){
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[15]');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$username_lama = $this->input->post('username_lama');
+            if ($this->form_validation->run() == FALSE) {
+			$errors = $this->form_validation->error_array();
+            echo '<script>alert("Periksa kembali inputan anda!");window.location.href="'.site_url('/Admin/update_user/'.$username_lama).'";</script>';
+
+		} else {
+			$username = $this->input->post('username');
+			$nama = $this->input->post('nama');
+			$email = $this->input->post('email');
+			$level = $this->input->post('level');
+			$data = [
+				'username' => $username,
+				'nama_lengkap' => $nama,
+				'email' => $email,
+				'level'	=> $level
+			];
+			$insert = $this->user_model->update($username_lama,$data);
+			if($insert){
+				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Admin/view_user').'";</script>';
+			}else{
+                echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Admin/update_user/'.$username_lama).'";</script>';
+            }
+		}
     }
 
     public function add_barang(){

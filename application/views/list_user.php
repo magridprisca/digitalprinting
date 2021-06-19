@@ -78,7 +78,7 @@
                                                 <td><?php echo $key->username;?></td>
                                                 <td><?php echo $key->nama_lengkap;?></td>
                                                 <td><?php echo $key->email;?></td>
-												<td><a href="<?=site_url()?>/admin/editpage/<?php echo "$key->username"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<td><a href="<?=site_url()?>/admin/update_user/<?php echo "$key->username"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
 												<a href="<?=site_url()?>/admin/del_user/<?php echo "$key->username"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
 											<?php }?>

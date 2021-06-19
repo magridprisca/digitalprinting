@@ -38,10 +38,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" action="<?php echo site_url() ?>/Admin/add_process" method="post" enctype="multipart/form-data"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Admin/update_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Tambah User</h3>
+                                    <h3 class="panel-title"><strong>Form</strong> Edit User</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
@@ -50,13 +50,14 @@
                                     
                                 </div>
                                 <div class="panel-body">                                                                        
-                                   
+                                
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="username" class="form-control" require/>
+                                                <input type="hidden" name="username_lama" class="form-control" value="<?php echo $datauser->username ?>" />
+                                                <input type="text" name="username" class="form-control" value="<?php echo $datauser->username ?>" require/>
                                             </div>                                            
                                             <span class="help-block">Username</span>
                                         </div>
@@ -66,7 +67,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nama" class="form-control"/>
+                                                <input type="text" name="nama" value="<?php echo $datauser->nama_lengkap ?>" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Nama Lengkap</span>
                                         </div>
@@ -76,20 +77,9 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="email" name="email" class="form-control"/>
+                                                <input type="email" name="email" value="<?php echo $datauser->email ?>" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Email Valid</span>
-                                        </div>
-                                    </div>
-									
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Password</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="password" name="password" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Gunakan Password yang mudah diingat</span>
                                         </div>
                                     </div>
 									
@@ -97,16 +87,15 @@
                                         <label class="col-md-3 col-xs-12 control-label">Level</label>
                                         <div class="col-md-6 col-xs-12">   
                                             <select name="level" class="select">
-                                                <option value="Admin">Admin</option>
-                                                <option value="User">User</option>
+                                                <option value="Admin" <?php if($datauser->level=="Admin"){ echo "selected"; } ?>>Admin</option>
+                                                <option value="User" <?php if($datauser->level=="User"){ echo "selected"; } ?>>User</option>
                                             </select>
                                             <span class="help-block">Jenis Login</span>
                                         </div>
                                     </div>
-								 
                                 </div>
                                 <div class="panel-footer">
-                                    <button type="reset" class="btn btn-default">Clear Form</button>                                    
+                                    <button type="reset" class="btn btn-default">Reset</button>                                    
                                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
