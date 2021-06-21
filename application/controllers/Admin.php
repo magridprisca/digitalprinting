@@ -119,49 +119,4 @@ class Admin extends CI_Controller {
 		}
     }
 
-    public function add_barang(){
-        
-        $this->load->view('tambah_barang');
-
-    }
-
-    public function view_barang(){
-        $databarang = $this->barang_model->getAll();
-        $data = [
-            'databarang' => $databarang,
-        ];
-        $this->load->view('list_barang',$data);
-
-    }
-
-    public function add_stok(){
-        
-        $this->load->view('tambah_stok');
-
-    }
-
-    public function view_stok(){
-        $datastok = $this->stok_model->getAll();
-        $data = [
-            'datastok' => $datastok,
-        ];
-        $this->load->view('list_stok',$data);
-
-    }
-
-    public function add_karyawan(){
-        
-        $this->load->view('tambah_karyawan');
-
-    }
-
-    public function view_karyawan(){
-        $datakaryawan = $this->karyawan_model->getAll();
-        $data = [
-            'datakaryawan' => $datakaryawan,
-        ];
-        $this->load->view('list_karyawan',$data);
-
-    }
-
 } 

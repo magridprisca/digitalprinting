@@ -16,7 +16,11 @@ class Karyawan_model extends CI_Model{
         }
     } 
     public function getAll(){
-		$hasil = $this->db->order_by("id_karyawan")->get('tb_karyawan');
+        $this->db->select('*');
+        $this->db->from('tb_karyawan');
+        $this->db->join('tb_user', 'tb_user.username = tb_karyawan.username');
+        $this->db->order_by("id_karyawan");
+        $hasil = $this->db->get();
 		if($hasil->num_rows() > 0){
 			return $hasil->result();
 		}else {
@@ -24,18 +28,23 @@ class Karyawan_model extends CI_Model{
 		}
 	}
     public function create($data){
-        $this->db->insert('tb_karyawan', $data);
+        return $this->db->insert('tb_karyawan', $data);
     }
     public function update($id, $data){
         $row = $this->db->where('id_karyawan',$id)->get('tb_karyawan')->row();
         // unlink($row->userPhoto);
-        $this->db->where('id_karyawan',$id)->update('tb_karyawan',$data);
+        return $this->db->where('id_karyawan',$id)->update('tb_karyawan',$data);
     }
     public function delete($id){
-        $this->db->where('id_karyawan',$id)->delete('tb_karyawan');
+        return $this->db->where('id_karyawan',$id)->delete('tb_karyawan');
     }
     public function findDetail($id){
-        $hasil = $this->db->where('id_karyawan=',$id)->limit(1)->get('tb_karyawan');
+        $this->db->select('*');
+        $this->db->from('tb_karyawan');
+        $this->db->join('tb_user', 'tb_user.username = tb_karyawan.username');
+        $this->db->where('id_karyawan=',$id)->limit(1);
+        $hasil = $this->db->get();
+        // $hasil = $this->db->where('id_karyawan=',$id)->limit(1)->get('tb_karyawan');
         if($hasil->num_rows() > 0){
             return $hasil->row();
         }else {
