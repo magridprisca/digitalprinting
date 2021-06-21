@@ -24,15 +24,15 @@ class Stok_model extends CI_Model{
 		}
 	}
     public function create($data){
-        $this->db->insert('tb_stok', $data);
+        return $this->db->insert('tb_stok', $data);
     }
     public function update($id, $data){
         $row = $this->db->where('id_stok',$id)->get('tb_stok')->row();
         // unlink($row->userPhoto);
-        $this->db->where('id_stok',$id)->update('tb_stok',$data);
+        return $this->db->where('id_stok',$id)->update('tb_stok',$data);
     }
     public function delete($id){
-        $this->db->where('id_stok',$id)->delete('tb_stok');
+        return $this->db->where('id_stok',$id)->delete('tb_stok');
     }
     public function findDetail($id){
         $hasil = $this->db->where('id_stok=',$id)->limit(1)->get('tb_stok');

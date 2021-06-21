@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Barang_model extends CI_Model{
+class Pelanggan_model extends CI_Model{
     public function register($table, $data)
     {
         return $this->db->insert($table, $data);
     }
     public function get_data()
     {
-        $hasil = $this->db->get('tb_barangmasuk');
+        $hasil = $this->db->get('tb_customer');
         if($hasil->num_rows() > 0){
             return $hasil->row();
         } else {
@@ -16,7 +16,7 @@ class Barang_model extends CI_Model{
         }
     } 
     public function getAll(){
-		$hasil = $this->db->order_by("id_barang")->get('tb_barangmasuk');
+		$hasil = $this->db->order_by("id_customer")->get('tb_customer');
 		if($hasil->num_rows() > 0){
 			return $hasil->result();
 		}else {
@@ -24,18 +24,18 @@ class Barang_model extends CI_Model{
 		}
 	}
     public function create($data){
-        return $this->db->insert('tb_barangmasuk', $data);
+        return $this->db->insert('tb_customer', $data);
     }
     public function update($id, $data){
-        $row = $this->db->where('id_barang',$id)->get('tb_barangmasuk')->row();
+        $row = $this->db->where('id_customer',$id)->get('tb_customer')->row();
         // unlink($row->userPhoto);
-        return $this->db->where('id_barang',$id)->update('tb_barangmasuk',$data);
+        return $this->db->where('id_customer',$id)->update('tb_customer',$data);
     }
     public function delete($id){
-        return $this->db->where('id_barang',$id)->delete('tb_barangmasuk');
+        return $this->db->where('id_customer',$id)->delete('tb_customer');
     }
     public function findDetail($id){
-        $hasil = $this->db->where('id_barang=',$id)->limit(1)->get('tb_barangmasuk');
+        $hasil = $this->db->where('id_customer=',$id)->limit(1)->get('tb_customer');
         if($hasil->num_rows() > 0){
             return $hasil->row();
         }else {

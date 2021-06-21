@@ -28,7 +28,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Tambah Stok Barang</li>
+                    <li class="active">Tambah Customer</li>
                 </ul>
                 <!-- END BREADCRUMB --> 
                 
@@ -38,10 +38,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" action="<?php echo site_url() ?>/Stok/add_process" method="post" enctype="multipart/form-data"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Pelanggan/add_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Tambah Stok Barang</h3>
+                                    <h3 class="panel-title"><strong>Form</strong> Tambah Customer</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
@@ -52,44 +52,33 @@
                                 <div class="panel-body">                                                                        
                                    
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Nama Stok</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Nama Customer</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nama_stok" class="form-control" require/>
+                                                <input type="text" name="nama_customer" class="form-control" require/>
                                             </div>                                            
-                                            <span class="help-block">Nama Stok</span>
+                                            <span class="help-block">Nama Customer</span>
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ukuran</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Telp Customer</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="ukuran_stok" class="form-control"/>
+                                                <input type="text" name="telp_customer" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Ukuran</span>
+                                            <span class="help-block">Telp Customer</span>
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Stok</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Keterangan</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="jml_stok" class="form-control"/>
+                                                <input type="text" name="keterangan" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Jumlah Stok</span>
-                                        </div>
-                                    </div>
-									
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Harga</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="harga_stok" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Harga</span>
+                                            <span class="help-block">Keterangan</span>
                                         </div>
                                     </div>
 									

@@ -98,9 +98,18 @@
                         <a href="<?=site_url()?>/progress/index"><span class="fa fa-exchange"></span> <span class="xn-text">Transaksi Penjualan</span></a> 
                         </li>
                     </li>
-					<li>
-                        <a href="<?=site_url()?>/progress/index"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Pelanggan</span></a> 
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Customer</span></a>
+                        <ul>
+                           <li><a href="<?=site_url()?>/Pelanggan/add_pelanggan"><span class="fa fa-arrows-h"></span> Tambah Customer</a></li>
+                           <li><a href="<?=site_url()?>/Pelanggan/view_pelanggan"><span class="fa fa-list-ul"></span> List Customer</a></li>
+                        </ul>
                     </li>
+
+
+					<!-- <li >
+                        <a href="<?=site_url()?>/progress/index"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Pelanggan</span></a> 
+                    </li> -->
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>

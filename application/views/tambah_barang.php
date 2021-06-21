@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" action="<?php echo site_url() ?>/Admin/add_process" method="post" enctype="multipart/form-data"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Barang/add_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Form</strong> Tambah Barang Masuk</h3>

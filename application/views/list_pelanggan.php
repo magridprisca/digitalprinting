@@ -42,7 +42,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">List Barang</li>
+                    <li class="active">List Customer</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
@@ -55,7 +55,7 @@
 							 <!-- START DEFAULT DATATABLE -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">                                
-                                    <h3 class="panel-title">Tabel Barang</h3>
+                                    <h3 class="panel-title">Tabel Customer</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
                                         <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
@@ -66,26 +66,26 @@
                                     <table class="table datatable">
                                         <thead>
                                             <tr>
-                                                <th>Nomor</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Barang</th>
-                                                <th>Tanggal Diterima</th>
+                                                <th>Nama Customer</th>
+                                                <th>Telp Customer</th>
+                                                <th>Keterangan</th>
+                                                <!-- <th>Tanggal Diterima</th>
                                                 <th>Supplier</th>
-                                                <th>Username</th>
+                                                <th>Username</th> -->
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-										<?php foreach ($databarang as $key) { ?>
+										<?php foreach ($datapelanggan as $key) { ?>
                                             <tr>
-                                                <td><?php echo $key->id_barang;?></td>
-                                                <td><?php echo $key->nama_barang;?></td>
-                                                <td><?php echo $key->jml_barang;?></td>
-                                                <td><?php echo $key->tgl_diterima;?></td>
+                                                <td><?php echo $key->id_customer;?></td>
+                                                <td><?php echo $key->telp_customer;?></td>
+                                                <td><?php echo $key->keterangan;?></td>
+                                                <!-- <td><?php echo $key->tgl_diterima;?></td>
                                                 <td><?php echo $key->supplier;?></td>
-                                                <td><?php echo $key->username;?></td>
-												<td><a href="<?=site_url()?>/barang/update_barang/<?php echo "$key->id_barang"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
-												<a href="<?=site_url()?>/barang/del_barang/<?php echo "$key->id_barang"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
+                                                <td><?php echo $key->username;?></td> -->
+												<td><a href="<?=site_url()?>/pelanggan/update_pelanggan/<?php echo "$key->id_customer"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<a href="<?=site_url()?>/pelanggan/del_pelanggan/<?php echo "$key->id_customer"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
 											<?php }?>
                                     </table>

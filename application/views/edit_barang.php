@@ -28,7 +28,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Tambah Stok Barang</li>
+                    <li class="active">Tambah Barang</li>
                 </ul>
                 <!-- END BREADCRUMB --> 
                 
@@ -38,10 +38,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" action="<?php echo site_url() ?>/Stok/add_process" method="post" enctype="multipart/form-data"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Barang/update_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Tambah Stok Barang</h3>
+                                    <h3 class="panel-title"><strong>Form</strong> Edit Barang</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
@@ -50,63 +50,64 @@
                                     
                                 </div>
                                 <div class="panel-body">                                                                        
-                                   
+                                    
+                                                <input type="hidden" name="id_barang" class="form-control" value="<?php echo $databarang->id_barang ?>" />
+                                                
+                                    </div>
+
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Nama Stok</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Nama Barang</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nama_stok" class="form-control" require/>
+                                                <input type="text" name="nama_barang" class="form-control" value="<?php echo $databarang->nama_barang ?>" />
                                             </div>                                            
-                                            <span class="help-block">Nama Stok</span>
+                                            <span class="help-block">Nama Barang</span>
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ukuran</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Barang</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="ukuran_stok" class="form-control"/>
+                                                <input type="text" name="jml_barang" value="<?php echo $databarang->jml_barang ?>" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Ukuran</span>
+                                            <span class="help-block">Jumlah Barang</span>
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Stok</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Tanggal Diterima</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="jml_stok" class="form-control"/>
+                                                <input type="date" name="tgl_diterima" value="<?php echo $databarang->tgl_diterima ?>" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Jumlah Stok</span>
-                                        </div>
-                                    </div>
-									
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Harga</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="harga_stok" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Harga</span>
+                                            <span class="help-block">TanggaL Diterima</span>
                                         </div>
                                     </div>
 									
-									<!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Level</label>
-                                        <div class="col-md-6 col-xs-12">   
-                                            <select name="level" class="select">
-                                                <option>Admin</option>
-                                                <option>User</option>
-                                            </select>
-                                            <span class="help-block">Nama Anda</span>
+									<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Supplier</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="supplier" value="<?php echo $databarang->supplier ?>" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Supplier</span>
                                         </div>
-                                    </div> -->
-								 
-                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="username" value="<?php echo $databarang->username ?>" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Username</span>
+                                        </div>
+                                    </div>
                                 <div class="panel-footer">
-                                    <button type="reset" class="btn btn-default">Clear Form</button>                                    
+                                    <button type="reset" class="btn btn-default">Reset</button>                                    
                                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
