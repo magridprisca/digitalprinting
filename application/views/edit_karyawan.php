@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal" action="<?php echo site_url() ?>/Karyawan/add_process" method="post" enctype="multipart/form-data"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Karyawan/update_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Form</strong> Tambah Karyawan</h3>
@@ -49,14 +49,15 @@
                                 <div class="panel-body">
                                     
                                 </div>
-                                <div class="panel-body">                                                                        
-                                   
+                                <div class="panel-body">
+
+                                    <input type="hidden" name="id_karyawan" class="form-control" value="<?php echo $datakaryawan->id_karyawan ?>"/>
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Tanggal Masuk</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="date" name="tgl_masuk" class="form-control" require/>
+                                                <input type="date" name="tgl_masuk" class="form-control" value="<?php echo $datakaryawan->tgl_masuk ?>" require/>
                                             </div>                                            
                                             <span class="help-block">Tanggal Masuk</span>
                                         </div>
@@ -65,28 +66,15 @@
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
                                         <div class="col-md-6 col-xs-12">   
-                                            <select name="username" onchange="getval(this);" class="select">
-                                                <option value="">Pilih username terdaftar</option>
-                                                <?php foreach ($datauser as $key) { ?>
-                                                <option value="<?= $key->username;?>"><?= $key->username;?></option>
-											<?php }?>
+                                                <input type="text" name="username" class="form-control" value="<?php echo $datakaryawan->username ?>" readonly/>
                                             </select>
                                             <span class="help-block">Daftar Username</span>
                                         </div>
                                     </div>
-                                    <script>
-                                    function getval(val){
-                                        // alert(sel.value);
-                                        document.getElementById("nama_karyawan").value = val.getAttribute('value');
-                                    }
-                                    </script>
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Nama Karyawan</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" id="nama_karyawan" name="nama_karyawan" class="form-control"/>
-                                            </div>                                            
+                                        <div class="col-md-6 col-xs-12">
+                                                <input type="text" id="nama_karyawan" name="nama_karyawan" value="<?php echo $datakaryawan->nama_lengkap ?>" class="form-control" readonly/>                                         
                                             <span class="help-block">Nama Karyawan</span>
                                         </div>
                                     </div>
@@ -95,7 +83,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nohp_karyawan" class="form-control"/>
+                                                <input type="text" name="nohp_karyawan" class="form-control" value="<?php echo $datakaryawan->nohp_karyawan ?>"/>
                                             </div>                                            
                                             <span class="help-block">Nomor HP</span>
                                         </div>
@@ -106,7 +94,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="alamat_karyawan" class="form-control"/>
+                                                <input type="text" name="alamat_karyawan" value="<?php echo $datakaryawan->alamat_karyawan ?>" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Alamat</span>
                                         </div>
@@ -117,23 +105,11 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="posisi" class="form-control"/>
+                                                <input type="text" name="posisi" class="form-control" value="<?php echo $datakaryawan->posisi ?>"/>
                                             </div>                                            
                                             <span class="help-block">Posisi</span>
                                         </div>
-                                    </div>
-
-                                    <!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="username" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Username</span>
-                                        </div>
-                                    </div> -->
-									
+                                    </div>	
 								 
                                 </div>
                                 <div class="panel-footer">

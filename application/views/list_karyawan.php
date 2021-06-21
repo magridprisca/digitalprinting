@@ -86,8 +86,8 @@
                                                 <td><?php echo $key->alamat_karyawan;?></td>
                                                 <td><?php echo $key->posisi;?></td>
                                                 <td><?php echo $key->username;?></td>
-												<td><a href="<?=site_url()?>/admin/editpage/<?php echo "$key->id_karyawan"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
-												<a href="<?=site_url()?>/admin/delete/<?php echo "$key->id_karyawan"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
+												<td><a href="<?=site_url()?>/Karyawan/update_karyawan/<?php echo "$key->id_karyawan"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<a href="<?=site_url()?>/Karyawan/del_karyawan/<?php echo "$key->id_karyawan"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
 											<?php }?>
                                     </table>
