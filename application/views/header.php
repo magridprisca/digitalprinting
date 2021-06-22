@@ -73,17 +73,17 @@
                         </ul>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-pencil-square-o"></span> <span class="xn-text">Laporan</span></a>
+                        <a href="#"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Customer</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/pengeluaran/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
-                           <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
+                           <li><a href="<?=site_url()?>/Pelanggan/add_pelanggan"><span class="fa fa-arrows-h"></span> Tambah Customer</a></li>
+                           <li><a href="<?=site_url()?>/Pelanggan/view_pelanggan"><span class="fa fa-list-ul"></span> List Customer</a></li>
                         </ul>
                     </li>
-					 <li class="xn-openable">
+					<li class="xn-openable">
                         <a href="#"><span class="fa fa-arrow-down"></span> <span class="xn-text">Data Barang Masuk</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/Admin/add_barang"><span class="fa fa-arrows-h"></span> Tambah Barang</a></li>
-                           <li><a href="<?=site_url()?>/Admin/view_barang"><span class="fa fa-list-ul"></span> List Barang</a></li>
+                           <li><a href="<?=site_url()?>/Barang/add_barang"><span class="fa fa-arrows-h"></span> Tambah Barang</a></li>
+                           <li><a href="<?=site_url()?>/Barang/view_barang"><span class="fa fa-list-ul"></span> List Barang</a></li>
                         </ul>
                     </li>
 					 <li class="xn-openable">
@@ -99,10 +99,10 @@
                         </li>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Customer</span></a>
+                        <a href="#"><span class="fa fa-pencil-square-o"></span> <span class="xn-text">Laporan</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/Pelanggan/add_pelanggan"><span class="fa fa-arrows-h"></span> Tambah Customer</a></li>
-                           <li><a href="<?=site_url()?>/Pelanggan/view_pelanggan"><span class="fa fa-list-ul"></span> List Customer</a></li>
+                           <li><a href="<?=site_url()?>/pengeluaran/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
+                           <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
                         </ul>
                     </li>
 
