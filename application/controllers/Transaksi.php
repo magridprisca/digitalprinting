@@ -8,17 +8,18 @@ class Transaksi extends CI_Controller {
         parent::__construct();
         $this->cek_sesi();
         $this->load->model('transaksi_model');
+        $this->load->model('user_model');
     }
 
-    public function add_transaksi(){
+    public function add_order(){
         $datauser = $this->user_model->getAll();
         $data = [
             'datauser' => $datauser,
         ];
-        $this->load->view('tambah_transaksi', $data);
+        $this->load->view('tambah_order', $data);
     }
 
-    public function add_process(){
+    public function addorder_process(){
         $this->form_validation->set_rules('tgl_masuk', 'Tanggal', 'required');
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('nama_transaksi', 'Nama transaksi', 'required');
@@ -27,7 +28,7 @@ class Transaksi extends CI_Controller {
 		$this->form_validation->set_rules('posisi', 'Posisi', 'required');
         if ($this->form_validation->run() == FALSE) {
 			$errors = $this->form_validation->error_array();
-            echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Transaksi/add_transaksi').'";</script>';
+            echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
 
 		} else {
 			$tgl_masuk = $this->input->post('tgl_masuk');
@@ -46,36 +47,36 @@ class Transaksi extends CI_Controller {
 			];
 			$insert = $this->transaksi_model->create($data);
 			if($insert){
-				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Transaksi/view_transaksi').'";</script>';
+				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Transaksi/view_order').'";</script>';
 			}else{
-                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_transaksi').'";</script>';
+                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
             }
 		}
     }
 
-    public function view_transaksi(){
+    public function view_order(){
         $datatransaksi = $this->transaksi_model->getAll();
         $data = [
             'datatransaksi' => $datatransaksi,
         ];
-        $this->load->view('list_transaksi',$data);
+        $this->load->view('list_order',$data);
 
     }
     
-    function del_transaksi($id_transaksi){
+    function del_order($id_transaksi){
         $insert = $this->transaksi_model->delete($id_transaksi);
-        redirect('transaksi/view_transaksi');
+        redirect('transaksi/view_order');
     }
 
-    public function update_transaksi($id_transaksi){
+    public function update_order($id_transaksi){
         $datatransaksi = $this->transaksi_model->findDetail($id_transaksi);
         $data = [
             'datatransaksi' => $datatransaksi,
         ];
-        $this->load->view('edit_transaksi',$data);
+        $this->load->view('edit_order',$data);
     }
     
-    public function update_process(){
+    public function updateorder_process(){
         $this->form_validation->set_rules('tgl_masuk', 'Tanggal', 'required');
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('nama_transaksi', 'Nama transaksi', 'required');
@@ -85,7 +86,7 @@ class Transaksi extends CI_Controller {
 		$id_transaksi = $this->input->post('id_transaksi');
             if ($this->form_validation->run() == FALSE) {
 			$errors = $this->form_validation->error_array();
-            echo '<script>alert("Periksa kembali inputan anda!");window.location.href="'.site_url('/Transaksi/update_transaksi/'.$id_transaksi).'";</script>';
+            echo '<script>alert("Periksa kembali inputan anda!");window.location.href="'.site_url('/Transaksi/update_order/'.$id_transaksi).'";</script>';
 
 		} else {
 			$tgl_masuk = $this->input->post('tgl_masuk');
@@ -104,9 +105,9 @@ class Transaksi extends CI_Controller {
 			];
 			$insert = $this->transaksi_model->update($id_transaksi,$data);
 			if($insert){
-				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Transaksi/view_transaksi').'";</script>';
+				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Transaksi/view_order').'";</script>';
 			}else{
-                echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Transaksi/update_transaksi/'.$id_transaksi).'";</script>';
+                echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Transaksi/update_order/'.$id_transaksi).'";</script>';
             }
 		}
     }
