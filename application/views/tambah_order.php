@@ -57,7 +57,6 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                                 <input type="date" name="tgl_masuk" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
-                                                <input type="text" name="tgl_masuk" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
                                             </div>
                                             <span class="help-block">Tanggal Order</span>
                                         </div>
