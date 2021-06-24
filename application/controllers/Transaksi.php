@@ -8,13 +8,13 @@ class Transaksi extends CI_Controller {
         parent::__construct();
         $this->cek_sesi();
         $this->load->model('transaksi_model');
-        $this->load->model('user_model');
+        $this->load->model('pelanggan_model');
     }
 
     public function add_order(){
-        $datauser = $this->user_model->getAll();
+        $datacus = $this->pelanggan_model->getAll();
         $data = [
-            'datauser' => $datauser,
+            'datauser' => $datacus,
         ];
         $this->load->view('tambah_order', $data);
     }

@@ -52,77 +52,41 @@
                                 <div class="panel-body">                                                                        
                                    
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Tanggal Masuk</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Tanggal Order</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="date" name="tgl_masuk" class="form-control" require/>
-                                            </div>                                            
-                                            <span class="help-block">Tanggal Masuk</span>
+                                                <input type="date" name="tgl_masuk" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
+                                                <input type="text" name="tgl_masuk" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
+                                            </div>
+                                            <span class="help-block">Tanggal Order</span>
                                         </div>
                                     </div>
                                     
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
                                         <div class="col-md-6 col-xs-12">   
-                                            <select name="username" onchange="getval(this);" class="select">
-                                                <option value="">Pilih username terdaftar</option>
-                                                <?php foreach ($datauser as $key) { ?>
-                                                <option value="<?= $key->username;?>"><?= $key->username;?></option>
-											<?php }?>
-                                            </select>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text"  readonly value="<?php echo $this->session->userdata('nama');?>" class="form-control"/>
+                                                <input type="hidden" name="username" value="<?php echo $this->session->userdata('username');?>" class="form-control"/>
+                                            </div>
                                             <span class="help-block">Daftar Username</span>
                                         </div>
                                     </div>
-                                    <script>
-                                    function getval(val){
-                                        // alert(sel.value);
-                                        document.getElementById("nama_karyawan").value = val.getAttribute('value');
-                                    }
-                                    </script>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Nama Karyawan</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Customer</label>
                                         <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" id="nama_karyawan" name="nama_karyawan" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Nama Karyawan</span>
-                                        </div>
-                                    </div>
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Nomor HP</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nohp_karyawan" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Nomor HP</span>
+                                            <select name="id_customer" class="form-control">
+                                                <option value="">Pilih Customer terdaftar</option>
+                                                <?php foreach ($datacus as $key) { ?>
+                                                <option value="<?= $key->id_customer;?>"><?= $key->nama_customer;?></option>
+											<?php }?>
+                                            </select>                                         
+                                            <span class="help-block">Pilih Customer</span>
                                         </div>
                                     </div>
 									
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Alamat</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="alamat_karyawan" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Alamat</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Posisi</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="posisi" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Posisi</span>
-                                        </div>
-                                    </div>
-
                                     <!-- <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
                                         <div class="col-md-6 col-xs-12">                                            
