@@ -37,6 +37,7 @@ class Karyawan extends CI_Controller {
 			$nohp_karyawan = $this->input->post('nohp_karyawan');
 			$alamat_karyawan = $this->input->post('alamat_karyawan');
 			$posisi = $this->input->post('posisi');
+			
 			$data = [
 				'username' => $username,
 				'tgl_masuk' => $tgl_masuk,

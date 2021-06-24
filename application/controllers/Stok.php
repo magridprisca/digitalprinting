@@ -9,12 +9,17 @@ class Stok extends CI_Controller {
         $this->cek_sesi();
         
         $this->load->model('stok_model');
+        $this->load->model('barang_model');
 
     }
 
     public function add_stok(){
         
-        $this->load->view('tambah_stok');
+        $databarang = $this->barang_model->getAll();
+        $data = [
+            'databarang' => $databarang,
+        ];
+        $this->load->view('tambah_stok', $data);
 
     }
 
@@ -69,9 +74,12 @@ class Stok extends CI_Controller {
     }
 
     public function update_stok($id_stok){
+        $databarang = $this->barang_model->getAll();
+
         $datastok = $this->stok_model->findDetail($id_stok);
         $data = [
             'datastok' => $datastok,
+            'databarang' => $databarang,
         ];
         $this->load->view('edit_stok',$data);
     }

@@ -66,6 +66,7 @@
                                     <table class="table datatable">
                                         <thead>
                                             <tr>
+                                                <th>ID Customer</th>
                                                 <th>Nama Customer</th>
                                                 <th>Telp Customer</th>
                                                 <th>Keterangan</th>
@@ -79,6 +80,7 @@
 										<?php foreach ($datapelanggan as $key) { ?>
                                             <tr>
                                                 <td><?php echo $key->id_customer;?></td>
+                                                <td><?php echo $key->nama_customer;?></td>
                                                 <td><?php echo $key->telp_customer;?></td>
                                                 <td><?php echo $key->keterangan;?></td>
                                                 <!-- <td><?php echo $key->tgl_diterima;?></td>

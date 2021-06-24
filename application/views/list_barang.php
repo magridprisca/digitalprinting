@@ -68,6 +68,9 @@
                                             <tr>
                                                 <th>Nomor</th>
                                                 <th>Nama Barang</th>
+                                                <th>Panjang</th>
+                                                <th>Lebar</th>
+                                                <th>Satuan</th>
                                                 <th>Jumlah Barang</th>
                                                 <th>Tanggal Diterima</th>
                                                 <th>Supplier</th>
@@ -80,6 +83,9 @@
                                             <tr>
                                                 <td><?php echo $key->id_barang;?></td>
                                                 <td><?php echo $key->nama_barang;?></td>
+                                                <td><?php echo $key->panjang;?></td>
+                                                <td><?php echo $key->lebar;?></td>
+                                                <td><?php echo $key->satuan;?></td>
                                                 <td><?php echo $key->jml_barang;?></td>
                                                 <td><?php echo $key->tgl_diterima;?></td>
                                                 <td><?php echo $key->supplier;?></td>

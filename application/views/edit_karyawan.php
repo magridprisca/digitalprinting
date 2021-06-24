@@ -28,7 +28,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Tambah Karyawan</li>
+                    <li class="active">Edit Karyawan</li>
                 </ul>
                 <!-- END BREADCRUMB --> 
                 
@@ -41,7 +41,7 @@
                             <form class="form-horizontal" action="<?php echo site_url() ?>/Karyawan/update_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Tambah Karyawan</h3>
+                                    <h3 class="panel-title"><strong>Form</strong> Edit Karyawan</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>

@@ -61,6 +61,36 @@
                                             <span class="help-block">Nama Barang</span>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Panjang</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="panjang" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Panjang</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Lebar</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="lebar" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Lebar</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Satuan</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="satuan" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Satuan</span>
+                                        </div>
+                                    </div>
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Jumlah Barang</label>
                                         <div class="col-md-6 col-xs-12">                                            
@@ -95,12 +125,13 @@
 
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="username" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Username</span>
+                                        <div class="col-md-6 col-xs-12">   
+                                                <?php $username=$this->session->userdata('username'); ?>
+                                            <input type="hidden" name="username" value="<?php echo $username ?>">
+                                                <!-- <option value="">Pilih username terdaftar</option> -->
+                                                <?php echo $username ?>
+                                            
+                                            <!-- <span class="help-block">Daftar Username</span> -->
                                         </div>
                                     </div>
 									

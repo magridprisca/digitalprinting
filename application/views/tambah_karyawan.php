@@ -65,7 +65,7 @@
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>
                                         <div class="col-md-6 col-xs-12">   
-                                            <select name="username" onchange="getval(this);" class="select">
+                                            <select name="username" onchange="getval(this);" class="form-control p-0 border-0">
                                                 <option value="">Pilih username terdaftar</option>
                                                 <?php foreach ($datauser as $key) { ?>
                                                 <option value="<?= $key->username;?>"><?= $key->username;?></option>

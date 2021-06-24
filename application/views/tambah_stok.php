@@ -54,10 +54,12 @@
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Nama Stok</label>
                                         <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="nama_stok" class="form-control" require/>
-                                            </div>                                            
+                                            <select name="nama_stok" onchange="getval(this);" class="form-control p-0 border-0">
+                                                <option value="">Pilih Stok Barang</option>
+                                                <?php foreach ($databarang as $key) { ?>
+                                                <option value="<?= $key->nama_barang;?>"><?= $key->nama_barang;?></option>
+                                            <?php }?>
+                                            </select>                     
                                             <span class="help-block">Nama Stok</span>
                                         </div>
                                     </div>

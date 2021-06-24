@@ -16,12 +16,16 @@ class Stok_model extends CI_Model{
         }
     } 
     public function getAll(){
-		$hasil = $this->db->order_by("id_stok")->get('tb_stok');
-		if($hasil->num_rows() > 0){
-			return $hasil->result();
-		}else {
-			return array();
-		}
+		$this->db->select('*');
+        $this->db->from('tb_stok');
+        $this->db->join('tb_barangmasuk', 'tb_barangmasuk.nama_barang = tb_stok.nama_stok');
+        $this->db->order_by("id_stok");
+        $hasil = $this->db->get();
+        if($hasil->num_rows() > 0){
+            return $hasil->result();
+        }else {
+            return array();
+        }
 	}
     public function create($data){
         return $this->db->insert('tb_stok', $data);
@@ -35,7 +39,12 @@ class Stok_model extends CI_Model{
         return $this->db->where('id_stok',$id)->delete('tb_stok');
     }
     public function findDetail($id){
-        $hasil = $this->db->where('id_stok=',$id)->limit(1)->get('tb_stok');
+        $this->db->select('*');
+        $this->db->from('tb_stok');
+        $this->db->join('tb_barangmasuk', 'tb_barangmasuk.nama_barang = tb_stok.nama_stok');
+        $this->db->where('id_stok=',$id)->limit(1);
+        $hasil = $this->db->get();
+        // $hasil = $this->db->where('id_karyawan=',$id)->limit(1)->get('tb_karyawan');
         if($hasil->num_rows() > 0){
             return $hasil->row();
         }else {
