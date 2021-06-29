@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         <link rel="icon" href="<?php echo base_url(); ?>assets/favicon.ico" type="image/x-icon" />
+        
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
@@ -35,7 +37,7 @@
 								<?php $pic=$this->session->userdata('gambar'); ?>
 								<?php
 									if($pic == NULL){
-									echo "<img src='../../assets/images/noimgs.jpg'/>";
+                                        echo "<img src='".base_url()."/assets/user.jpg'/>";
 									//echo "<img src='base_url();assets/images/noimg.jpg' alt='Negev'/>";
 								}
 								else{
