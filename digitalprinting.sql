@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04 Jul 2021 pada 07.58
+-- Generation Time: 04 Jul 2021 pada 08.10
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -132,6 +132,7 @@ CREATE TABLE `tb_stok` (
   `nama_stok` varchar(50) DEFAULT NULL,
   `panjang_stok` varchar(20) DEFAULT NULL,
   `lebar_stok` int(11) NOT NULL,
+  `satuan_stok` varchar(11) NOT NULL,
   `jml_stok` int(11) DEFAULT NULL,
   `harga_stok` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
@@ -140,12 +141,13 @@ CREATE TABLE `tb_stok` (
 -- Dumping data untuk tabel `tb_stok`
 --
 
-INSERT INTO `tb_stok` (`id_stok`, `nama_stok`, `panjang_stok`, `lebar_stok`, `jml_stok`, `harga_stok`) VALUES
-(1, 'kertas', '10x20', 0, 2, 10000),
-(2, 'abcde', '123', 0, 1, 2345),
-(3, 'tinta', '1', 0, 1, 1000),
-(4, 'tinta', '1', 0, 1, 1000),
-(5, 'tinta', '1', 0, 1, 1000);
+INSERT INTO `tb_stok` (`id_stok`, `nama_stok`, `panjang_stok`, `lebar_stok`, `satuan_stok`, `jml_stok`, `harga_stok`) VALUES
+(1, 'kertas', '10x20', 0, '0', 2, 10000),
+(2, 'abcde', '123', 0, '0', 1, 2345),
+(3, 'tinta', '1', 0, '0', 1, 1000),
+(4, 'tinta', '1', 0, '0', 1, 1000),
+(5, 'tinta', '1', 0, '0', 1, 1000),
+(6, 'kertasA', '9', 2, 'm', 1, 1000);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,7 @@ ALTER TABLE `tb_karyawan`
 -- AUTO_INCREMENT for table `tb_stok`
 --
 ALTER TABLE `tb_stok`
-  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
