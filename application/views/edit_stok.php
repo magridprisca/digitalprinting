@@ -71,13 +71,33 @@
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ukuran Stok</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Panjang Stok</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="ukuran_stok" value="<?php echo $datastok->ukuran_stok ?>" class="form-control"/>
+                                                <input type="text" name="panjang_stok" value="<?php echo $datastok->panjang_stok ?>" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Ukuran Stok</span>
+                                            <span class="help-block">Panjang Stok</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Lebar Stok</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="lebar_stok" value="<?php echo $datastok->lebar_stok ?>" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Lebar Stok</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Satuan Stok</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="satuan_stok" value="<?php echo $datastok->satuan_stok ?>" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Satuan Stok</span>
                                         </div>
                                     </div>
 									<div class="form-group">

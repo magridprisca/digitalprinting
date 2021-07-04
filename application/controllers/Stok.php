@@ -13,9 +13,9 @@ class Stok extends CI_Controller {
 
     }
 
-    public function add_stok(){
+    public function add_stok($id_barang){
         
-        $databarang = $this->barang_model->getAll();
+        $databarang = $this->barang_model->findDetail($id_barang);
         $data = [
             'databarang' => $databarang,
         ];
@@ -29,31 +29,37 @@ class Stok extends CI_Controller {
             'datastok' => $datastok,
         ];
         $this->load->view('list_stok',$data);
+        $this->load->model('barang_model');
 
     }
 
     public function add_process(){
         $this->form_validation->set_rules('nama_stok', 'Nama Stok', 'required');
-        $this->form_validation->set_rules('ukuran_stok', 'Ukuran Stok', 'required');
+        $this->form_validation->set_rules('panjang_stok', 'Panjang Stok', 'required');
+        $this->form_validation->set_rules('lebar_stok', 'Lebar Stok', 'required');
+        $this->form_validation->set_rules('satuan_stok', 'Satuan Stok', 'required');
         $this->form_validation->set_rules('jml_stok', 'Jumlah Stok', 'required');
         $this->form_validation->set_rules('harga_stok', 'Harga Stok', 'required');
+
         if ($this->form_validation->run() == FALSE) {
             $errors = $this->form_validation->error_array();
-            // $this->session->set_flashdata('errors', $errors);
-            // $this->session->set_flashdata('input', $this->input->post());
-            // redirect('Admin/add_user');
             echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Stok/add_stok').'";</script>';
 
         } else {
             $nama_stok = $this->input->post('nama_stok');
-            $ukuran_stok = $this->input->post('ukuran_stok');
+            $panjang_stok = $this->input->post('panjang_stok');
+            $lebar_stok = $this->input->post('lebar_stok');
+            $satuan_stok = $this->input->post('satuan_stok');
             $jml_stok = $this->input->post('jml_stok');
             $harga_stok = $this->input->post('harga_stok');
-            // $level = $this->input->post('level');
-            // $pass = password_hash($password, PASSWORD_DEFAULT);
+            $id_barang = $this->input->post('id_barang');
+
             $data = [
+                'id_barang' => $id_barang,
                 'nama_stok' => $nama_stok,
-                'ukuran_stok' => $ukuran_stok,
+                'panjang_stok' => $panjang_stok,
+                'lebar_stok' => $lebar_stok,
+                'satuan_stok' => $satuan_stok,
                 'jml_stok' => $jml_stok,
                 'harga_stok' => $harga_stok
                 
@@ -86,7 +92,9 @@ class Stok extends CI_Controller {
     
     public function update_process(){
         $this->form_validation->set_rules('nama_stok', 'Nama Stok', 'required');
-        $this->form_validation->set_rules('ukuran_stok', 'Ukuran Stok', 'required');
+        $this->form_validation->set_rules('panjang_stok', 'Panjang Stok', 'required');
+        $this->form_validation->set_rules('lebar_stok', 'Lebar Stok', 'required');
+        $this->form_validation->set_rules('satuan_stok', 'Satuan Stok', 'required');
         $this->form_validation->set_rules('jml_stok', 'Jumlah Stok', 'required');
         $this->form_validation->set_rules('harga_stok', 'Harga Stok', 'required');
         $id_stok = $this->input->post('id_stok');
@@ -96,12 +104,18 @@ class Stok extends CI_Controller {
 
         } else {
             $nama_stok = $this->input->post('nama_stok');
-            $ukuran_stok = $this->input->post('ukuran_stok');
+            $panjang_stok = $this->input->post('panjang_stok');
+            $lebar_stok = $this->input->post('lebar_stok');
+            $satuan_stok = $this->input->post('satuan_stok');
             $jml_stok = $this->input->post('jml_stok');
             $harga_stok = $this->input->post('harga_stok');
+            $id_barang = $this->input->post('id_barang');
             $data = [
+                'id_barang' => $id_barang,
                 'nama_stok' => $nama_stok,
-                'ukuran_stok' => $ukuran_stok,
+                'panjang_stok' => $panjang_stok,
+                'lebar_stok' => $lebar_stok,
+                'satuan_stok' => $satuan_stok,
                 'jml_stok' => $jml_stok,
                 'harga_stok' => $harga_stok
             ];

@@ -91,7 +91,7 @@
 					 <li class="xn-openable">
                         <a href="#"><span class="fa fa-table"></span> <span class="xn-text">Stok Barang</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/Stok/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li>
+                           <!-- <li><a href="<?=site_url()?>/Stok/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li> -->
                            <li><a href="<?=site_url()?>/Stok/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
                         </ul>
                     </li>

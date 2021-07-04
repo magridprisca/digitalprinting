@@ -68,7 +68,9 @@
                                             <tr>
                                                 <th>Nomor</th>
                                                 <th>Nama Stok</th>
-                                                <th>Ukuran</th>
+                                                <th>Panjang</th>
+                                                <th>Lebar</th>
+                                                <th>Satuan</th>
                                                 <th>Jumlah Stok</th>
                                                 <th>Harga</th>
                                                 <th>Aksi</th>
@@ -79,7 +81,9 @@
                                             <tr>
                                                 <td><?php echo $key->id_stok;?></td>
                                                 <td><?php echo $key->nama_stok;?></td>
-                                                <td><?php echo $key->ukuran_stok;?></td>
+                                                <td><?php echo $key->panjang_stok;?></td>
+                                                <td><?php echo $key->lebar_stok;?></td>
+                                                <td><?php echo $key->satuan_stok;?></td>
                                                 <td><?php echo $key->jml_stok;?></td>
                                                 <td><?php echo $key->harga_stok;?></td>
 												<td><a href="<?=site_url()?>/stok/update_stok/<?php echo "$key->id_stok"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp

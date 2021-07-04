@@ -53,24 +53,62 @@
                                    
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Nama Stok</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <select name="nama_stok" onchange="getval(this);" class="form-control p-0 border-0">
-                                                <option value="">Pilih Stok Barang</option>
-                                                <?php foreach ($databarang as $key) { ?>
-                                                <option value="<?= $key->nama_barang;?>"><?= $key->nama_barang;?></option>
-                                            <?php }?>
-                                            </select>                     
+                                        <div class="col-md-6 col-xs-12">
+                                        <div class="input-group">  
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>               
+                                            <input type="hidden" name="id_barang" value="<?php echo $databarang->id_barang ?>" class="form-control"/>
+                                            <input type="text" name="nama_stok" value="<?php echo $databarang->nama_barang ?>" class="form-control"/>
+                                        </div>                
                                             <span class="help-block">Nama Stok</span>
                                         </div>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Ukuran</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Panjang </label>
+                                        <div class="col-md-6 col-xs-12">
+                                        <div class="input-group">  
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>               
+                                            <input type="text" name="panjang_stok" value="<?php echo $databarang->panjang ?>" class="form-control"/>
+                                        </div>                                     
+                                            <span class="help-block">Panjang</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Lebar Awal</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="ukuran_stok" class="form-control"/>
+                                                <input type="text" name="lebar" id="lebar" value="<?php echo $databarang->lebar ?>" class="form-control"/>
                                             </div>                                            
-                                            <span class="help-block">Ukuran</span>
+                                            <span class="help-block">Lebar Awal</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Lebar Stok</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" id="lebar_stok" name="lebar_stok" class="form-control" onchange="hitung_jumlah()" />
+                                            </div>                                            
+                                            <span class="help-block">Lebar Stok </span>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        function hitung_jumlah(){
+                                            var lebar = $("#lebar").val();
+                                            var lebar_stok = $("#lebar_stok").val();
+
+                                            var hasil = lebar/lebar_stok;
+                                            $("#jml_stok").val(hasil);
+                                        }
+                                    </script>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Satuan</label>
+                                        <div class="col-md-6 col-xs-12">  
+                                        <div class="input-group">  
+                                        <span class="input-group-addon"><span class="fa fa-pencil"></span></span>               
+                                            <input type="text" name="satuan_stok" value="<?php echo $databarang->satuan ?>"  class="form-control"/>                  
+                                            </div>                                            
+                                            <span class="help-block">Satuan</span>
                                         </div>
                                     </div>
 									<div class="form-group">
@@ -78,7 +116,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="jml_stok" class="form-control"/>
+                                                <input type="text" id="jml_stok" name="jml_stok" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Jumlah Stok</span>
                                         </div>
@@ -95,17 +133,6 @@
                                         </div>
                                     </div>
 									
-									<!-- <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Level</label>
-                                        <div class="col-md-6 col-xs-12">   
-                                            <select name="level" class="select">
-                                                <option>Admin</option>
-                                                <option>User</option>
-                                            </select>
-                                            <span class="help-block">Nama Anda</span>
-                                        </div>
-                                    </div> -->
-								 
                                 </div>
                                 <div class="panel-footer">
                                     <button type="reset" class="btn btn-default">Clear Form</button>                                    

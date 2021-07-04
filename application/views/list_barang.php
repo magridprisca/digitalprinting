@@ -90,7 +90,7 @@
                                                 <td><?php echo $key->tgl_diterima;?></td>
                                                 <td><?php echo $key->supplier;?></td>
                                                 <td><?php echo $key->username;?></td>
-												<td><a href="<?=site_url()?>/barang/update_barang/<?php echo "$key->id_barang"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<td><a href="<?=site_url()?>/stok/add_stok/<?php echo "$key->id_barang"?>" ><span class="fa fa-plus"></a>&nbsp&nbsp<a href="<?=site_url()?>/barang/update_barang/<?php echo "$key->id_barang"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
 												<a href="<?=site_url()?>/barang/del_barang/<?php echo "$key->id_barang"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
 											<?php }?>
