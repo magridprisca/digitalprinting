@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Jun 2021 pada 15.31
+-- Generation Time: 04 Jul 2021 pada 07.58
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -43,7 +43,9 @@ CREATE TABLE `tb_barangmasuk` (
 --
 
 INSERT INTO `tb_barangmasuk` (`id_barang`, `nama_barang`, `panjang`, `lebar`, `satuan`, `jml_barang`, `tgl_diterima`, `supplier`, `username`) VALUES
-(1, 'kertasA', 0, 0, '', 1, '2021-06-21', 'yuan', 'magrid');
+(1, 'kertasA', 0, 0, '', 1, '2021-06-21', 'yuan', 'magrid'),
+(2, 'kertas', 1, 1, 'botol', 1, '2021-06-24', 'yuan', 'magrid'),
+(3, 'tinta', 1, 1, 'botol', 1, '2021-06-25', 'yuan', 'magrid');
 
 -- --------------------------------------------------------
 
@@ -57,6 +59,13 @@ CREATE TABLE `tb_customer` (
   `telp_customer` varchar(13) DEFAULT NULL,
   `keterangan` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data untuk tabel `tb_customer`
+--
+
+INSERT INTO `tb_customer` (`id_customer`, `nama_customer`, `telp_customer`, `keterangan`) VALUES
+(1, 'hendra', '1234', 'abc');
 
 -- --------------------------------------------------------
 
@@ -121,7 +130,8 @@ INSERT INTO `tb_karyawan` (`id_karyawan`, `tgl_masuk`, `nama_karyawan`, `nohp_ka
 CREATE TABLE `tb_stok` (
   `id_stok` int(11) NOT NULL,
   `nama_stok` varchar(50) DEFAULT NULL,
-  `ukuran_stok` varchar(20) DEFAULT NULL,
+  `panjang_stok` varchar(20) DEFAULT NULL,
+  `lebar_stok` int(11) NOT NULL,
   `jml_stok` int(11) DEFAULT NULL,
   `harga_stok` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
@@ -130,9 +140,12 @@ CREATE TABLE `tb_stok` (
 -- Dumping data untuk tabel `tb_stok`
 --
 
-INSERT INTO `tb_stok` (`id_stok`, `nama_stok`, `ukuran_stok`, `jml_stok`, `harga_stok`) VALUES
-(1, 'kertas', '10x20', 2, 10000),
-(2, 'abcde', '123', 1, 2345);
+INSERT INTO `tb_stok` (`id_stok`, `nama_stok`, `panjang_stok`, `lebar_stok`, `jml_stok`, `harga_stok`) VALUES
+(1, 'kertas', '10x20', 0, 2, 10000),
+(2, 'abcde', '123', 0, 1, 2345),
+(3, 'tinta', '1', 0, 1, 1000),
+(4, 'tinta', '1', 0, 1, 1000),
+(5, 'tinta', '1', 0, 1, 1000);
 
 -- --------------------------------------------------------
 
@@ -230,12 +243,12 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_barangmasuk`
 --
 ALTER TABLE `tb_barangmasuk`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_detail`
 --
@@ -255,7 +268,7 @@ ALTER TABLE `tb_karyawan`
 -- AUTO_INCREMENT for table `tb_stok`
 --
 ALTER TABLE `tb_stok`
-  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
