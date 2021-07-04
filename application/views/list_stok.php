@@ -86,7 +86,7 @@
                                                 <td><?php echo $key->satuan_stok;?></td>
                                                 <td><?php echo $key->jml_stok;?></td>
                                                 <td><?php echo $key->harga_stok;?></td>
-												<td><a href="<?=site_url()?>/stok/update_stok/<?php echo "$key->id_stok"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<td><!-- <a href="<?=site_url()?>/stok/update_stok/<?php echo "$key->id_stok"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp -->
 												<a href="<?=site_url()?>/stok/del_stok/<?php echo "$key->id_stok"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
 											<?php }?>

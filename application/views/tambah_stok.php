@@ -97,7 +97,7 @@
                                             var lebar = $("#lebar").val();
                                             var lebar_stok = $("#lebar_stok").val();
 
-                                            var hasil = lebar/lebar_stok;
+                                            var hasil = Math.floor(lebar /lebar_stok);
                                             $("#jml_stok").val(hasil);
                                         }
                                     </script>

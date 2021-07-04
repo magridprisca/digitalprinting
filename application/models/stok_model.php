@@ -41,7 +41,7 @@ class Stok_model extends CI_Model{
     public function findDetail($id){
         $this->db->select('*');
         $this->db->from('tb_stok');
-        $this->db->join('tb_barangmasuk', 'tb_barangmasuk.nama_barang = tb_stok.nama_stok');
+        $this->db->join('tb_barangmasuk', 'tb_barangmasuk.id_barang = tb_stok.id_barang');
         $this->db->where('id_stok=',$id)->limit(1);
         $hasil = $this->db->get();
         // $hasil = $this->db->where('id_karyawan=',$id)->limit(1)->get('tb_karyawan');
