@@ -28,7 +28,10 @@ class transaksi_model extends CI_Model{
 		}
 	}
     public function create($data){
-        return $this->db->insert('tb_transaksi', $data);
+        $this->db->insert('tb_transaksi', $data);
+        $insert_id = $this->db->insert_id();
+
+        return  $insert_id;
     }
     public function update($id, $data){
         $row = $this->db->where('id_transaksi',$id)->get('tb_transaksi')->row();
@@ -42,6 +45,7 @@ class transaksi_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('tb_transaksi');
         $this->db->join('tb_user', 'tb_user.username = tb_transaksi.username');
+        $this->db->join('tb_customer', 'tb_customer.id_customer = tb_transaksi.id_customer');
         $this->db->where('id_transaksi=',$id)->limit(1);
         $hasil = $this->db->get();
         // $hasil = $this->db->where('id_transaksi=',$id)->limit(1)->get('tb_transaksi');

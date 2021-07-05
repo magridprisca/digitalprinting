@@ -35,7 +35,7 @@
 								<?php $pic=$this->session->userdata('gambar'); ?>
 								<?php
 									if($pic == NULL){
-									echo "<img src='../../assets/images/noimgs.jpg'/>";
+									echo "<img src='".base_url()."/assets/user.jpg'/>";
 									//echo "<img src='base_url();assets/images/noimg.jpg' alt='Negev'/>";
 								}
 								else{

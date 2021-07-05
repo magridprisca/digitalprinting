@@ -9,49 +9,55 @@ class Transaksi extends CI_Controller {
         $this->cek_sesi();
         $this->load->model('transaksi_model');
         $this->load->model('pelanggan_model');
+        $this->load->model('stok_model');
     }
 
     public function add_order(){
         $datacus = $this->pelanggan_model->getAll();
+        $datastok = $this->stok_model->getAll();
         $data = [
-            'datauser' => $datacus,
+            'datacus' => $datacus,
+            'datastok' => $datastok,
         ];
         $this->load->view('tambah_order', $data);
     }
 
     public function addorder_process(){
-        $this->form_validation->set_rules('tgl_masuk', 'Tanggal', 'required');
+        $this->form_validation->set_rules('tgl_transaksi', 'Tanggal', 'required');
 		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('nama_transaksi', 'Nama transaksi', 'required');
-		$this->form_validation->set_rules('nohp_transaksi', 'No HP', 'required');
-		$this->form_validation->set_rules('alamat_transaksi', 'Alamat', 'required');
-		$this->form_validation->set_rules('posisi', 'Posisi', 'required');
+		$this->form_validation->set_rules('id_customer', 'Customer', 'required');
         if ($this->form_validation->run() == FALSE) {
 			$errors = $this->form_validation->error_array();
-            echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
+            echo '<script>alert("Gagal menyimpan data! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
 
 		} else {
-			$tgl_masuk = $this->input->post('tgl_masuk');
+			$tgl_transaksi = $this->input->post('tgl_transaksi');
 			$username = $this->input->post('username');
-			$nama_transaksi = $this->input->post('nama_transaksi');
-			$nohp_transaksi = $this->input->post('nohp_transaksi');
-			$alamat_transaksi = $this->input->post('alamat_transaksi');
-			$posisi = $this->input->post('posisi');
+			$id_customer = $this->input->post('id_customer');
+			
 			$data = [
 				'username' => $username,
-				'tgl_masuk' => $tgl_masuk,
-				'nama_transaksi' => $nama_transaksi,
-				'nohp_transaksi' => $nohp_transaksi,
-				'alamat_transaksi'	=> $alamat_transaksi,
-				'posisi'	=> $posisi
+				'tgl_transaksi' => $tgl_transaksi,
+				'id_customer' => $id_customer,
 			];
 			$insert = $this->transaksi_model->create($data);
+
 			if($insert){
-				echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Transaksi/view_order').'";</script>';
+				redirect('Transaksi/add_order2/'.$insert);
 			}else{
                 echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
             }
 		}
+    }
+
+	public function add_order2($id){
+        $datatrx = $this->transaksi_model->findDetail($id);
+        $datastok = $this->stok_model->getAll();
+        $data = [
+            'datatrx' => $datatrx,
+            'datastok' => $datastok,
+        ];
+        $this->load->view('tambah_order2', $data);
     }
 
     public function view_order(){

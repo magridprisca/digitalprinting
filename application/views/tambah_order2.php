@@ -56,7 +56,7 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="date" name="tgl_transaksi" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
+                                                <input type="date" name="tgl_transaksi" value="<?= $datatrx->tgl_transaksi ?>" class="form-control" require/>
                                             </div>
                                             <span class="help-block">Tanggal Order</span>
                                         </div>
@@ -67,21 +67,19 @@
                                         <div class="col-md-6 col-xs-12">   
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text"  readonly value="<?php echo $this->session->userdata('nama');?>" class="form-control"/>
-                                                <input type="hidden" name="username" value="<?php echo $this->session->userdata('username');?>" class="form-control"/>
+                                                <input type="text"  value="<?= $datatrx->nama_lengkap;?>" class="form-control"/>
+                                                <input type="hidden" name="id_transaksi" value="<?= $datatrx->id_transaksi;?>" class="form-control"/>
                                             </div>
                                             <span class="help-block">Daftar Username</span>
                                         </div>
                                     </div>
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Customer</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <select name="id_customer" class="form-control">
-                                                <option value="">Pilih Customer terdaftar</option>
-                                                <?php foreach ($datacus as $key) { ?>
-                                                <option value="<?= $key->id_customer;?>"><?= $key->nama_customer;?></option>
-											<?php }?>
-                                            </select>                                         
+                                        <div class="col-md-6 col-xs-12"> 
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" value="<?= $datatrx->nama_customer;?>" class="form-control"/>
+                                            </div>                                       
                                             <span class="help-block">Pilih Customer</span>
                                         </div>
                                     </div>
@@ -90,6 +88,9 @@
                                         <div class="form-group" id="detail_transaksi">
                                         <h2 align="center">Detail Order</h2>  
                                                 <div class="table">  
+                                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+                                                tambahkan detail pesanan
+                                                </button>
                                                     <table class="table table-bordered" id="dynamic_field">  
                                                         <tr>
                                                             <th>Nama Barang</th>
@@ -131,26 +132,113 @@
                             </form>
                             
                         </div>
-                    </div>           
-                
-                <script type="text/javascript">
-                    $(document).ready(function(){      
-                    var i=1;  
-                
-                    $('#add').click(function(){  
-                        i++;  
-                        $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="addmore[][id_stok]" class="form-control" required /></td><td><input type="text" name="addmore2[][jml_detail]" class="form-control" required /></td><td><input type="text" name="addmore3[][harga_detail]" class="form-control" required /></td><td><input type="text" name="addmore4[][jasa_design]" class="form-control" required /></td><td><input type="text" name="addmore5[][total]" class="form-control" required /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-                    });
-                
-                    $(document).on('click', '.btn_remove', function(){  
-                        var button_id = $(this).attr("id");   
-                        $('#row'+button_id+'').remove();  
-                    });  
-                
-                    });  
-                </script>
+                    </div>     
+                    
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                                
             </div>            
             <!-- END PAGE CONTENT -->
 			<?php $this->load->view('footer');?>
+            
+<!-- Modal -->
+<div class="modal fade" id="modalForm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Detail Pesanan</h4>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p class="statusMsg"></p>
+                <form role="form">
+                    <input type="text" class="form-control" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
+                    <div class="form-group">
+                        <label for="inputName">Nama Barang</label>
+                        <select name="id_stok" class="form-control">
+                            <option value="">Pilih Stok Bahan</option>
+                            <?php foreach ($datastok as $key) { ?>
+                            <option value="<?= $key->id_stok.";".$key->harga_stok;?>"><?= $key->nama_stok.' '. $key->panjang_stok.'x'.$key->lebar_stok.' '.$key->satuan_stok;?></option>
+                        <?php }?>
+                        </select>  
+                    </div>
+                    <div class="form-group">
+                        <label for="jml_detail">Jumlah</label>
+                        <input type="number" class="form-control" id="jml_detail" placeholder="Jumlah Pesan"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga_detail">Harga</label>
+                        <input type="number" class="form-control" id="harga_detail" placeholder="Harga Satuan"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="jasa_design">Jasa Design</label>
+                        <input type="number" class="form-control" id="jasa_design" placeholder="Biaya Jasa Design"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="total">Total</label>
+                        <input type="number" class="form-control" id="total" placeholder="Total Harga"/>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>      
+        
+<script>
+function submitContactForm(){
+    var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+.)+[A-Z]{2,4}$/i;
+    var name = $('#inputName').val();
+    var email = $('#inputEmail').val();
+    var message = $('#inputMessage').val();
+    if(name.trim() == '' ){
+        alert('Please enter your name.');
+        $('#inputName').focus();
+        return false;
+    }else if(email.trim() == '' ){
+        alert('Please enter your email.');
+        $('#inputEmail').focus();
+        return false;
+    }else if(email.trim() != '' && !reg.test(email)){
+        alert('Please enter valid email.');
+        $('#inputEmail').focus();
+        return false;
+    }else if(message.trim() == '' ){
+        alert('Please enter your message.');
+        $('#inputMessage').focus();
+        return false;
+    }else{
+        $.ajax({
+            type:'POST',
+            url:'submit_form.php',
+            data:'contactFrmSubmit=1&name='+name+'&email='+email+'&message='+message,
+            beforeSend: function () {
+                $('.submitBtn').attr("disabled","disabled");
+                $('.modal-body').css('opacity', '.5');
+            },
+            success:function(msg){
+                if(msg == 'ok'){
+                    $('#inputName').val('');
+                    $('#inputEmail').val('');
+                    $('#inputMessage').val('');
+                    $('.statusMsg').html('<span style="color:green;">Thanks for contacting us, we'll get back to you soon.</p>');
+                }else{
+                    $('.statusMsg').html('<span style="color:red;">Some problem occurred, please try again.</span>');
+                }
+                $('.submitBtn').removeAttr("disabled");
+                $('.modal-body').css('opacity', '');
+            }
+        });
+    }
+}
+</script>
