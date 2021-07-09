@@ -56,11 +56,14 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="date" name="tgl_transaksi" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
+                                                <input type="date" id="tgl_transaksi" name="tgl_transaksi" value="<?php echo date("d/m/Y") ?>" class="form-control" require/>
                                             </div>
                                             <span class="help-block">Tanggal Order</span>
                                         </div>
                                     </div>
+                                    <script type="text/javascript">
+                                        document.getElementById('tgl_transaksi').valueAsDate = new Date();
+                                    </script>
                                     
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Username</label>

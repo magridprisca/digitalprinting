@@ -76,10 +76,12 @@
 									<div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Customer</label>
                                         <div class="col-md-6 col-xs-12"> 
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" value="<?= $datatrx->nama_customer;?>" class="form-control"/>
-                                            </div>                                       
+                                            <select name="id_customer" class="form-control">
+                                                <option value="">Pilih Customer terdaftar</option>
+                                                <?php foreach ($datacus as $key) { ?>
+                                                <option value="<?= $key->id_customer;?>" <?php if($datatrx->id_customer==$key->id_customer) echo "selected";?>><?= $key->nama_customer;?></option>
+											<?php }?>
+                                            </select>           
                                             <span class="help-block">Pilih Customer</span>
                                         </div>
                                     </div>
@@ -160,7 +162,7 @@
                     <input type="text" class="form-control" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
                     <div class="form-group">
                         <label for="inputName">Nama Barang</label>
-                        <select name="id_stok" class="form-control">
+                        <select name="id_stok" id="id_stok" class="form-control">
                             <option value="">Pilih Stok Bahan</option>
                             <?php foreach ($datastok as $key) { ?>
                             <option value="<?= $key->id_stok.";".$key->harga_stok;?>"><?= $key->nama_stok.' '. $key->panjang_stok.'x'.$key->lebar_stok.' '.$key->satuan_stok;?></option>
@@ -197,44 +199,36 @@
         
 <script>
 function submitContactForm(){
-    var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+.)+[A-Z]{2,4}$/i;
-    var name = $('#inputName').val();
-    var email = $('#inputEmail').val();
-    var message = $('#inputMessage').val();
-    if(name.trim() == '' ){
-        alert('Please enter your name.');
-        $('#inputName').focus();
+    var id_transaksi = $('#id_transaksi').val();
+    var id_stok = $('#id_stok').val();
+    var jml_detail = $('#jml_detail').val();
+    var harga_detail = $('#harga_detail').val();
+    var jasa_design = $('#jasa_design').val();
+    var total = $('#total').val();
+    if(id_stok.trim() == '' ){
+        alert('Pilih stok barang yang akan digunakan.');
+        $('#id_stok').focus();
         return false;
-    }else if(email.trim() == '' ){
-        alert('Please enter your email.');
-        $('#inputEmail').focus();
+    }else if(jml_detail.trim() == '' ){
+        alert('Masukkan jumlah order.');
+        $('#jml_detail').focus();
         return false;
-    }else if(email.trim() != '' && !reg.test(email)){
-        alert('Please enter valid email.');
-        $('#inputEmail').focus();
-        return false;
-    }else if(message.trim() == '' ){
-        alert('Please enter your message.');
-        $('#inputMessage').focus();
+    }else if(harga_detail.trim() == '' ){
+        alert('Masukkan harga satuan.');
+        $('#harga_detail').focus();
         return false;
     }else{
         $.ajax({
             type:'POST',
-            url:'submit_form.php',
-            data:'contactFrmSubmit=1&name='+name+'&email='+email+'&message='+message,
+            url:'<?=site_url()?>/Transaksi/add_karyawan',
+            data:'id_transaksi='+id_transaksi+'&id_stok='+id_stok+'&jml_detail='+jml_detail+'&jml_detail='+harga_detail+'&harga_detail='+jasa_design+'&total='+total,
             beforeSend: function () {
                 $('.submitBtn').attr("disabled","disabled");
                 $('.modal-body').css('opacity', '.5');
             },
-            success:function(msg){
-                if(msg == 'ok'){
-                    $('#inputName').val('');
-                    $('#inputEmail').val('');
-                    $('#inputMessage').val('');
+            success:function(){
                     $('.statusMsg').html('<span style="color:green;">Thanks for contacting us, we'll get back to you soon.</p>');
-                }else{
-                    $('.statusMsg').html('<span style="color:red;">Some problem occurred, please try again.</span>');
-                }
+                
                 $('.submitBtn').removeAttr("disabled");
                 $('.modal-body').css('opacity', '');
             }

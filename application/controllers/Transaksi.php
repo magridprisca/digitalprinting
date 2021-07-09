@@ -52,9 +52,11 @@ class Transaksi extends CI_Controller {
 
 	public function add_order2($id){
         $datatrx = $this->transaksi_model->findDetail($id);
+        $datacus = $this->pelanggan_model->getAll();
         $datastok = $this->stok_model->getAll();
         $data = [
             'datatrx' => $datatrx,
+            'datacus' => $datacus,
             'datastok' => $datastok,
         ];
         $this->load->view('tambah_order2', $data);
