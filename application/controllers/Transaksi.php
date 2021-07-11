@@ -8,6 +8,7 @@ class Transaksi extends CI_Controller {
         parent::__construct();
         $this->cek_sesi();
         $this->load->model('transaksi_model');
+        $this->load->model('detail_model');
         $this->load->model('pelanggan_model');
         $this->load->model('stok_model');
     }
@@ -53,13 +54,49 @@ class Transaksi extends CI_Controller {
 	public function add_order2($id){
         $datatrx = $this->transaksi_model->findDetail($id);
         $datacus = $this->pelanggan_model->getAll();
+        $datadetail = $this->detail_model->getAll();
         $datastok = $this->stok_model->getAll();
         $data = [
             'datatrx' => $datatrx,
             'datacus' => $datacus,
             'datastok' => $datastok,
+            'datadetail' => $datadetail,
         ];
         $this->load->view('tambah_order2', $data);
+    }
+    
+    public function addorder_process2(){
+        $this->form_validation->set_rules('id_stok', 'Nama stok', 'required');
+		$this->form_validation->set_rules('jml_detail', 'Jumlah', 'required');
+		$this->form_validation->set_rules('harga_detail', 'Harga', 'required');
+        if ($this->form_validation->run() == FALSE) {
+			$errors = $this->form_validation->error_array();
+            echo '<script>alert("Gagal menyimpan data! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
+
+		} else {
+			$id_transaksi = $this->input->post('id_transaksi');
+			$id_stok = $this->input->post('id_stok');
+			$jml_detail = $this->input->post('jml_detail');
+			$harga_detail = $this->input->post('harga_detail');
+			$jasa_design = $this->input->post('jasa_design');
+			$total = $this->input->post('total');
+			
+			$data = [
+				'id_transaksi' => $id_transaksi,
+				'id_stok' => $id_stok,
+				'jml_detail' => $jml_detail,
+				'harga_detail' => $harga_detail,
+				'jasa_design' => $jasa_design,
+				'total_detail' => $total,
+			];
+			$insert = $this->detail_model->create($data);
+
+			if($insert){
+				redirect('Transaksi/add_order2/'.$id_transaksi);
+			}else{
+                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
+            }
+		}
     }
 
     public function view_order(){

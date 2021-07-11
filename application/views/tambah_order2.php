@@ -100,8 +100,19 @@
                                                             <th>Harga</th>
                                                             <th>Jasa Design</th>
                                                             <th>Total</th>
-                                                            <th>Tambahkan</th>
+                                                            <th>Aksi</th>
                                                         </tr>
+                                                        <?php foreach ($datadetail as $key) { ?>
+                                                        <tr>
+                                                            <td><?php echo $key->nama_stok;?></td>
+                                                            <td><?php echo $key->jml_detail;?></td>
+                                                            <td><?php echo $key->harga_detail;?></td>
+                                                            <td><?php echo $key->jasa_design;?></td>
+                                                            <td><?php echo $key->total_detail;?></td>
+                                                            <td><a href="<?=site_url()?>/Transaksi/update_karyawan/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+                                                            <a href="<?=site_url()?>/Transaksi/del_karyawan/<?php echo "$key->id_transaksi"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
+                                                        </tr>
+                                                        <?php }?>
                                                         <!-- <tr>  
                                                             <td>
                                                             <select name="addmore[][id_stok]" class="form-control">
@@ -158,11 +169,11 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form role="form">
-                    <input type="text" class="form-control" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
+                <form role="form" method="post" action="<?php echo site_url() ?>/Transaksi/addorder_process2">
+                    <input type="text" class="form-control" nama="id_transaksi" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
                     <div class="form-group">
                         <label for="inputName">Nama Barang</label>
-                        <select name="id_stok" id="id_stok" class="form-control">
+                        <select name="id_stok" id="id_stok" class="form-control" require>
                             <option value="">Pilih Stok Bahan</option>
                             <?php foreach ($datastok as $key) { ?>
                             <option value="<?= $key->id_stok.";".$key->harga_stok;?>"><?= $key->nama_stok.' '. $key->panjang_stok.'x'.$key->lebar_stok.' '.$key->satuan_stok;?></option>
@@ -171,68 +182,29 @@
                     </div>
                     <div class="form-group">
                         <label for="jml_detail">Jumlah</label>
-                        <input type="number" class="form-control" id="jml_detail" placeholder="Jumlah Pesan"/>
+                        <input type="number" class="form-control" name="jml_detail" id="jml_detail" placeholder="Jumlah Pesan" require/>
                     </div>
                     <div class="form-group">
                         <label for="harga_detail">Harga</label>
-                        <input type="number" class="form-control" id="harga_detail" placeholder="Harga Satuan"/>
+                        <input type="number" class="form-control" name="harga_detail" id="harga_detail" placeholder="Harga Satuan" require/>
                     </div>
                     <div class="form-group">
                         <label for="jasa_design">Jasa Design</label>
-                        <input type="number" class="form-control" id="jasa_design" placeholder="Biaya Jasa Design"/>
+                        <input type="number" class="form-control" name="jasa_design" id="jasa_design" placeholder="Biaya Jasa Design" require/>
                     </div>
                     <div class="form-group">
                         <label for="total">Total</label>
-                        <input type="number" class="form-control" id="total" placeholder="Total Harga"/>
+                        <input type="number" class="form-control" name="total" id="total" placeholder="Total Harga" require/>
                     </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                </div>
                 </form>
             </div>
             
             <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">Submit</button>
-            </div>
         </div>
     </div>
 </div>      
-        
-<script>
-function submitContactForm(){
-    var id_transaksi = $('#id_transaksi').val();
-    var id_stok = $('#id_stok').val();
-    var jml_detail = $('#jml_detail').val();
-    var harga_detail = $('#harga_detail').val();
-    var jasa_design = $('#jasa_design').val();
-    var total = $('#total').val();
-    if(id_stok.trim() == '' ){
-        alert('Pilih stok barang yang akan digunakan.');
-        $('#id_stok').focus();
-        return false;
-    }else if(jml_detail.trim() == '' ){
-        alert('Masukkan jumlah order.');
-        $('#jml_detail').focus();
-        return false;
-    }else if(harga_detail.trim() == '' ){
-        alert('Masukkan harga satuan.');
-        $('#harga_detail').focus();
-        return false;
-    }else{
-        $.ajax({
-            type:'POST',
-            url:'<?=site_url()?>/Transaksi/add_karyawan',
-            data:'id_transaksi='+id_transaksi+'&id_stok='+id_stok+'&jml_detail='+jml_detail+'&jml_detail='+harga_detail+'&harga_detail='+jasa_design+'&total='+total,
-            beforeSend: function () {
-                $('.submitBtn').attr("disabled","disabled");
-                $('.modal-body').css('opacity', '.5');
-            },
-            success:function(){
-                    $('.statusMsg').html('<span style="color:green;">Thanks for contacting us, we'll get back to you soon.</p>');
-                
-                $('.submitBtn').removeAttr("disabled");
-                $('.modal-body').css('opacity', '');
-            }
-        });
-    }
-}
-</script>
+   
