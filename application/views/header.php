@@ -99,15 +99,16 @@
                         <a href="<?=site_url()?>/progress/index"><span class="fa fa-exchange"></span> <span class="xn-text">Transaksi Penjualan</span></a> 
                         <ul>
                            <li><a href="<?=site_url()?>/Transaksi/view_order"><span class="fa fa-shopping-cart"></span> Order</a></li>
-                           <li><a href="<?=site_url()?>/Transaksi/view_stok"><span class="fa fa-money"></span> Pembayaran</a></li>
-                           <li><a href="<?=site_url()?>/Transaksi/view_stok"><span class="fa fa-history"></span> Riwayat Transaksi</a></li>
+                           <li><a href="<?=site_url()?>/Transaksi/view_pembayaran"><span class="fa fa-money"></span> Pembayaran</a></li>
+                           <li><a href="<?=site_url()?>/Transaksi/view_riwayat"><span class="fa fa-history"></span> Riwayat Transaksi</a></li>
                         </ul>
                      </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil-square-o"></span> <span class="xn-text">Laporan</span></a>
                         <ul>
-                           <li><a href="<?=site_url()?>/pengeluaran/tambahpage"><span class="fa fa-arrows-h"></span> Tambah Pengeluaran</a></li>
-                           <li><a href="<?=site_url()?>/pengeluaran/pengeluaranpage"><span class="fa fa-list-ul"></span> List Pengeluaran</a></li>
+                           <li><a href="<?=site_url()?>/Laporan/view_laporanHarian"><span class="fa fa-arrows-h"></span> Harian </a></li>
+                           <li><a href="<?=site_url()?>/Laporan/view_laporanMingguan"><span class="fa fa-list-ul"></span> Mingguan </a></li>
+                           <li><a href="<?=site_url()?>/Laporan/view_laporanBulanan"><span class="fa fa-list-ul"></span> Bulanan </a></li>
                         </ul>
                     </li>
 

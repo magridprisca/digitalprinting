@@ -157,5 +157,37 @@ class Transaksi extends CI_Controller {
 		}
     }
 
+    public function view_riwayat(){
+        $datariwayat = $this->transaksi_model->get_data();
+        $data = [
+            'datariwayat' => $datariwayat,
+        ];
+        $this->load->view('riwayat_transaksi',$data);
+
+    }
+
+    public function view_pembayaran(){
+        $datapembayaran = $this->transaksi_model->get_datapembayaran();
+        $data = [
+            'datapembayaran' => $datapembayaran,
+        ];
+        $this->load->view('pembayaran',$data);
+
+    }
+
+    public function bayar($id){
+        $datatrx = $this->transaksi_model->findDetail($id);
+        $datacus = $this->pelanggan_model->getAll();
+        $datadetail = $this->detail_model->getAll();
+        $datastok = $this->stok_model->getAll();
+        $data = [
+            'datatrx' => $datatrx,
+            'datacus' => $datacus,
+            'datastok' => $datastok,
+            'datadetail' => $datadetail,
+        ];
+        $this->load->view('bayar', $data);
+    }
+
 
 } 

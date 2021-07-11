@@ -8,13 +8,42 @@ class transaksi_model extends CI_Model{
     }
     public function get_data()
     {
-        $hasil = $this->db->get('tb_transaksi');
+        $this->db->select('*');
+        $this->db->from('tb_transaksi');
+        $this->db->join('tb_user', 'tb_user.username = tb_transaksi.username');
+        $this->db->join('tb_detail', 'tb_detail.id_transaksi = tb_transaksi.id_transaksi');
+        $this->db->join('tb_stok', 'tb_stok.id_stok = tb_detail.id_stok');
+        
+        $this->db->join('tb_customer', 'tb_customer.id_customer = tb_transaksi.id_customer');
+        $this->db->order_by("tb_transaksi.id_transaksi");
+        $this->db->where('ket_bayar', '1');
+        $hasil = $this->db->get();
         if($hasil->num_rows() > 0){
-            return $hasil->row();
-        } else {
+            return $hasil->result();
+        }else {
             return array();
         }
     } 
+
+    public function get_datapembayaran()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_transaksi');
+        $this->db->join('tb_user', 'tb_user.username = tb_transaksi.username');
+        $this->db->join('tb_detail', 'tb_detail.id_transaksi = tb_transaksi.id_transaksi');
+        $this->db->join('tb_stok', 'tb_stok.id_stok = tb_detail.id_stok');
+        
+        $this->db->join('tb_customer', 'tb_customer.id_customer = tb_transaksi.id_customer');
+        $this->db->order_by("tb_transaksi.id_transaksi");
+        $this->db->where('ket_bayar', '0');
+        $hasil = $this->db->get();
+        if($hasil->num_rows() > 0){
+            return $hasil->result();
+        }else {
+            return array();
+        }
+    } 
+
     public function getAll(){
         $this->db->select('*');
         $this->db->from('tb_transaksi');
