@@ -170,7 +170,7 @@
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form role="form" method="post" action="<?php echo site_url() ?>/Transaksi/addorder_process2">
-                    <input type="text" class="form-control" nama="id_transaksi" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
+                    <input type="hidden" class="form-control" nama="id_transaksi" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
                     <div class="form-group">
                         <label for="inputName">Nama Barang</label>
                         <select name="id_stok" id="id_stok" class="form-control" require>
@@ -180,17 +180,27 @@
                         <?php }?>
                         </select>  
                     </div>
+                    <script>
+                        function hitung(){
+                           var jumlah = parseInt($("#jml_detail").val());
+                           var harga = parseInt($("#harga_detail").val());
+                           var jasa_design = parseInt($("#jasa_design").val());
+                           var hasil = (jumlah * harga) + jasa_design;
+                           console.log(hasil);
+                           $("#total").val(hasil);
+                       }
+                    </script>
                     <div class="form-group">
                         <label for="jml_detail">Jumlah</label>
-                        <input type="number" class="form-control" name="jml_detail" id="jml_detail" placeholder="Jumlah Pesan" require/>
+                        <input type="number" class="form-control" name="jml_detail" id="jml_detail" onchange="hitung()" placeholder="Jumlah Pesan" require/>
                     </div>
                     <div class="form-group">
                         <label for="harga_detail">Harga</label>
-                        <input type="number" class="form-control" name="harga_detail" id="harga_detail" placeholder="Harga Satuan" require/>
+                        <input type="number" class="form-control" name="harga_detail" id="harga_detail"  onchange="hitung()" placeholder="Harga Satuan" require/>
                     </div>
                     <div class="form-group">
                         <label for="jasa_design">Jasa Design</label>
-                        <input type="number" class="form-control" name="jasa_design" id="jasa_design" placeholder="Biaya Jasa Design" require/>
+                        <input type="number" class="form-control" name="jasa_design" id="jasa_design" onchange="hitung()" placeholder="Biaya Jasa Design" require/>
                     </div>
                     <div class="form-group">
                         <label for="total">Total</label>

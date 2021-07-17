@@ -54,7 +54,7 @@ class Transaksi extends CI_Controller {
 	public function add_order2($id){
         $datatrx = $this->transaksi_model->findDetail($id);
         $datacus = $this->pelanggan_model->getAll();
-        $datadetail = $this->detail_model->getAll();
+        $datadetail = $this->detail_model->getAllId($id);
         $datastok = $this->stok_model->getAll();
         $data = [
             'datatrx' => $datatrx,
