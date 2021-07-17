@@ -11,7 +11,7 @@
  Target Server Version : 100121
  File Encoding         : 65001
 
- Date: 04/07/2021 15:52:35
+ Date: 15/07/2021 13:24:37
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `tb_barangmasuk`  (
   `supplier` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_barangmasuk
@@ -40,7 +40,8 @@ CREATE TABLE `tb_barangmasuk`  (
 INSERT INTO `tb_barangmasuk` VALUES (1, 'kertasA', 0, 0, '', 1, '2021-06-21', 'yuan', 'magrid');
 INSERT INTO `tb_barangmasuk` VALUES (2, 'kertas', 1, 1, 'botol', 1, '2021-06-24', 'yuan', 'magrid');
 INSERT INTO `tb_barangmasuk` VALUES (3, 'tinta', 1, 1, 'botol', 1, '2021-06-25', 'yuan', 'magrid');
-INSERT INTO `tb_barangmasuk` VALUES (4, 'banner', 120, 0, 'cm', 1, '2021-07-04', 'yuan', 'magrid');
+INSERT INTO `tb_barangmasuk` VALUES (5, 'banner', 120, 0, 'cm', 1, '2021-07-04', 'yuan', 'magrid');
+INSERT INTO `tb_barangmasuk` VALUES (6, 'banner A', 120, 120, 'cm', 1, '2021-07-11', 'magrid', 'magrid');
 
 -- ----------------------------
 -- Table structure for tb_customer
@@ -70,12 +71,15 @@ CREATE TABLE `tb_detail`  (
   `harga_detail` int NULL DEFAULT NULL,
   `jasa_design` int NULL DEFAULT NULL,
   `jml_detail` int NULL DEFAULT NULL,
+  `total_detail` int NOT NULL,
   PRIMARY KEY (`id_detail`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_detail
 -- ----------------------------
+INSERT INTO `tb_detail` VALUES (1, 1, 3, 6000, 5000, 1, 11000);
+INSERT INTO `tb_detail` VALUES (2, 3, 3, 6000, 0, 1, 6000);
 
 -- ----------------------------
 -- Table structure for tb_gaji
@@ -121,24 +125,21 @@ INSERT INTO `tb_karyawan` VALUES (1, '2021-06-17', 'yuanita', '123456', 'malang'
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_stok`;
 CREATE TABLE `tb_stok`  (
-  `id_stok` int NOT NULL,
+  `id_stok` int NOT NULL AUTO_INCREMENT,
   `nama_stok` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `panjang_stok` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `lebar_stok` int NOT NULL,
   `satuan_stok` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `jml_stok` int NULL DEFAULT NULL,
   `harga_stok` int NULL DEFAULT NULL,
-  `id_barang` int NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  `id_barang` int NULL DEFAULT NULL,
+  PRIMARY KEY (`id_stok`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_stok
 -- ----------------------------
-INSERT INTO `tb_stok` VALUES (0, 'tinta', '1', 1, 'm', 1, 5000, 3);
-INSERT INTO `tb_stok` VALUES (0, 'tnta', '1', 1, 'botol', 1, 5000, 3);
-INSERT INTO `tb_stok` VALUES (0, 'tinta', '1', 1, 'botol', 1, 500, 3);
-INSERT INTO `tb_stok` VALUES (0, 'banner', '120', 60, 'cm', 2, 1000, NULL);
-INSERT INTO `tb_stok` VALUES (0, 'banner', '120', 60, 'cm', 2, 6000, 4);
+INSERT INTO `tb_stok` VALUES (3, 'banner', '120', 60, 'cm', 2, 6000, 5);
 
 -- ----------------------------
 -- Table structure for tb_transaksi
@@ -150,12 +151,18 @@ CREATE TABLE `tb_transaksi`  (
   `id_customer` int NULL DEFAULT NULL,
   `tgl_transaksi` date NULL DEFAULT NULL,
   `total_transaksi` int NULL DEFAULT NULL,
+  `dibayar` int NULL DEFAULT 0,
+  `tgl_bayar` datetime NULL DEFAULT NULL,
+  `ket_bayar` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id_transaksi`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_transaksi
 -- ----------------------------
+INSERT INTO `tb_transaksi` VALUES (1, 'magrid', 1, '2021-05-22', 0, 0, '2021-07-11 15:53:47', 0);
+INSERT INTO `tb_transaksi` VALUES (2, 'magrid', 1, '2021-07-05', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_transaksi` VALUES (3, 'magrid', 1, '2021-07-11', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for tb_user
