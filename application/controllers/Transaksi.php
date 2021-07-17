@@ -71,7 +71,7 @@ class Transaksi extends CI_Controller {
 		$this->form_validation->set_rules('harga_detail', 'Harga', 'required');
         if ($this->form_validation->run() == FALSE) {
 			$errors = $this->form_validation->error_array();
-            echo '<script>alert("Gagal menyimpan data! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
+            echo '<script>alert("Gagal menyimpan data! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
 
 		} else {
 			$id_transaksi = $this->input->post('id_transaksi');
@@ -94,7 +94,7 @@ class Transaksi extends CI_Controller {
 			if($insert){
 				redirect('Transaksi/add_order2/'.$id_transaksi);
 			}else{
-                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_order').'";</script>';
+                echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
             }
 		}
     }

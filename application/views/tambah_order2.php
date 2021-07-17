@@ -170,7 +170,7 @@
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form role="form" method="post" action="<?php echo site_url() ?>/Transaksi/addorder_process2">
-                    <input type="hidden" class="form-control" nama="id_transaksi" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
+                    <input type="hidden" class="form-control" name="id_transaksi" id="id_transaksi" value="<?= $datatrx->id_transaksi;?>"/>
                     <div class="form-group">
                         <label for="inputName">Nama Barang</label>
                         <select name="id_stok" id="id_stok" class="form-control" require>
