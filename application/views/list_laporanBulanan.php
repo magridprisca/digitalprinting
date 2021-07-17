@@ -62,6 +62,43 @@
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
+
+                                <!-- search -->
+                                <!-- <button <?php echo $button3[1] ?> class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="fa fa-search"></span></button> -->
+                                <button  class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="fa fa-search"></span></button>
+                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <form method="post" action="<?php echo site_url()?>/Laporan/view_laporanBulanan">
+                                    <h4 class="modal-title" id="myModalLabel">Cari Data Periode</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <h4>Cari Periode Mutu dan Judul Mutu</h4>
+                                    
+                                    
+                                    <div class='input-group date' id=''>
+                                    <input name="tgl_bln" id="" type='text' class="form-control "/>
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button class="btn btn-primary">Reset</button> -->
+                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                                    
+
+
                                 <div class="panel-body">
                                     <table class="table datatable">
                                         <thead>
@@ -99,3 +136,71 @@
             </div>            
             <!-- END PAGE CONTENT -->
 			<?php $this->load->view('footer');?>
+<<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function() {
+            $('.date-picker').datepicker( {
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'MM yy',
+            onClose: function(dateText, inst) { 
+                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+            }
+            });
+        });
+    </script>
+    <style>
+    .ui-datepicker-calendar {
+        display: none;
+    }
+    </style>
+    <script>
+    $('#myDatepicker').datetimepicker({
+        format: 'MM/YYYY'
+    });
+
+    function cek(){
+        var tgl_cari=moment("01/"+$('#tgl_cari').val()).format("YYYY-DD");
+        var dpt=$('#dpt').val();
+        var jdl_cari=$('#jdl').val();
+        if(tgl_cari=='Invalid date' || dpt=='-' || jdl_cari=='-'){
+            $('#isi').text("Data belum lengkap!!!");
+            $('#peringatan2').click();
+        }else{
+            loadPagination(0);
+        }
+    }
+
+    function loadPagination(pagno){
+       var url;
+       var tgl_cari;
+       if($('#tgl_cari').val()==""){
+        tgl_cari="Invalid date";
+       }else{
+        tgl_cari=moment("01/"+$('#tgl_cari').val()).format("YYYY-DD");
+       }
+         
+       
+       if(tgl_cari=='Invalid date' ){
+          url="<?php echo base_url().'index.php/Login/tampilDataMutu/' ?>"+pagno;
+         }else if(tgl_cari!='Invalid date'){
+          url="<?php echo base_url().'index.php/Login/tampilDataMutu/' ?>"+pagno+"/"+tgl_cari;
+         }else{
+          url="<?php echo base_url().'index.php/Login/tampilDataMutu/' ?>"+pagno+"/"+tgl_cari;
+         }
+       
+       $.ajax({
+         url: url,
+         type: 'get',
+         dataType: 'json',
+         success: function(response){
+            $('#pagination').html(response.pagination);
+            createTable(response.tampil,response.offset,response.button3);
+         }
+       });
+     }
+
+</script>

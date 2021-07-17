@@ -62,6 +62,46 @@
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
+
+                                <!-- search -->
+                                <!-- <button <?php echo $button3[1] ?> class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="fa fa-search"></span></button> -->
+                                <button  class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="fa fa-search"></span></button>
+                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                    </button>
+                                    
+                                    <form method="post" action="<?php echo site_url()?>/Laporan/view_laporanHarian">
+                                        
+                                    <h4 class="modal-title" id="myModalLabel">Cari Data Periode</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                    <h4>Cari Periode Mutu dan Judul Mutu</h4>
+                                    
+                                    
+                                    <div class='input-group date' id=''>
+                                    <input name="tgl_hari" id="" type='text' class="form-control date-picker"/>
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button class="btn btn-primary">Reset</button> -->
+                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                                    
+
+
+
                                 <div class="panel-body">
                                     <table class="table datatable">
                                         <thead>
