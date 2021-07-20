@@ -178,15 +178,62 @@ class Transaksi extends CI_Controller {
     public function bayar($id){
         $datatrx = $this->transaksi_model->findDetail($id);
         $datacus = $this->pelanggan_model->getAll();
-        $datadetail = $this->detail_model->getAll();
+        $datadetail = $this->detail_model->getAllId($id);
+        $total = $this->detail_model->total_bayar($id);
         $datastok = $this->stok_model->getAll();
         $data = [
             'datatrx' => $datatrx,
             'datacus' => $datacus,
             'datastok' => $datastok,
             'datadetail' => $datadetail,
+            'total' => $total,
         ];
         $this->load->view('bayar', $data);
+    }
+    
+    public function bayar_process(){
+        $this->form_validation->set_rules('total_transaksi', 'Total Bayar', 'required');
+		$this->form_validation->set_rules('dibayar', 'Dibayar', 'required');
+        if ($this->form_validation->run() == FALSE) {
+			$errors = $this->form_validation->error_array();
+            echo '<script>alert("Gagal menyimpan pembayaran! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
+
+		} else {
+			$id_transaksi = $this->input->post('id_transaksi');
+			$total_transaksi = $this->input->post('total_transaksi');
+			$dibayar = $this->input->post('dibayar');
+			
+			$data = [
+				'total_transaksi' => $total_transaksi,
+				'dibayar' => $dibayar,
+				'tgl_bayar' => date('Y-m-d h:i:s'),
+				'ket_bayar' => 1,
+			];
+			$insert = $this->transaksi_model->update($id_transaksi,$data);
+
+			if($insert){
+                echo '<script>alert("Pembayaran berhasik dilakukan.");window.location.href="'.site_url('/Transaksi/bayar/'.$id_transaksi).'";</script>';
+				// redirect('Transaksi/bayar/'.$id_transaksi);
+			}else{
+                echo '<script>alert("Gagal menyimpan pembayaran.");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
+            }
+		}
+    }
+
+    public function riwayat_pembayaran($id){
+        $datatrx = $this->transaksi_model->findDetail($id);
+        $datacus = $this->pelanggan_model->getAll();
+        $datadetail = $this->detail_model->getAllId($id);
+        $total = $this->detail_model->total_bayar($id);
+        $datastok = $this->stok_model->getAll();
+        $data = [
+            'datatrx' => $datatrx,
+            'datacus' => $datacus,
+            'datastok' => $datastok,
+            'datadetail' => $datadetail,
+            'total' => $total,
+        ];
+        $this->load->view('riwayat_detail', $data);
     }
 
 

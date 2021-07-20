@@ -28,7 +28,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Pembayaran</li>
+                    <li class="active">Riwayat Transaksi</li>
                 </ul>
                 <!-- END BREADCRUMB --> 
                 
@@ -38,10 +38,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal"> 
+                            <form class="form-horizontal" action="<?php echo site_url() ?>/Transaksi/bayar_process" method="post" enctype="multipart/form-data"> 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Pembayaran </h3>
+                                    <h3 class="panel-title"><strong>Form</strong> Riwayat Transaksi </h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>
