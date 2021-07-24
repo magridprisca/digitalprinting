@@ -38,7 +38,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <form class="form-horizontal"> 
+                        <form class="form-horizontal" role="form" method="post" action="<?php echo site_url() ?>/Transaksi/bayar_process">
+                             
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Form</strong> Pembayaran </h3>
