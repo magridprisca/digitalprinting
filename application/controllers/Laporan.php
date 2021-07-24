@@ -31,14 +31,16 @@ class Laporan extends CI_Controller {
     }
 
     public function view_laporanMingguan(){
-        if (isset($_REQUEST['tgl_minggu'])==null) 
+        if (isset($_REQUEST['tgl_awal'])==null) 
         {
-        $tgl_transaksi = date('Y-m-d');
+        $tgl_awal = date('Y-m-d');
+        $tgl_akhir = date('Y-m-d');
         }else{
-            $tgl_transaksi = $this->input->post("tgl_hari");
+            $tgl_awal = $this->input->post("tgl_awal");
+            $tgl_akhir = $this->input->post("tgl_akhir");
         }
-        $tgl_transaksi = date('Y-m-d');
-        $datalaporanMingguan = $this->laporan_model->get_dataMingguan($tgl_transaksi);
+
+        $datalaporanMingguan = $this->laporan_model->get_dataMingguan($tgl_awal, $tgl_akhir);
         
         $data = [
             'datalaporan' => $datalaporanMingguan,

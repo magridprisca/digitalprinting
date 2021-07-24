@@ -83,9 +83,9 @@
                                     
                                     
                                     <div class='input-group date' id=''>
-                                    <input name="tgl_hari" id="" type='text' class="form-control date-picker"/>
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    <input type="date" name="tgl_hari"  class="form-control" require/>
+                                
                                     </span>
                                     </div>
                                     </div>

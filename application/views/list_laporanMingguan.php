@@ -73,22 +73,31 @@
                                     <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                     </button>
+
+                                    <form method="post" action="<?php echo site_url()?>/Laporan/view_laporanMingguan">
+
                                     <h4 class="modal-title" id="myModalLabel">Cari Data Periode</h4>
                                     </div>
                                     <div class="modal-body">
                                     <h4>Cari Periode Mutu dan Judul Mutu</h4>
                                     
+                                    <h4 class="modal-title" id="myModalLabel">Tanggal Awal</h4>
                                     
                                     <div class='input-group date' id=''>
-                                    <input id="" type='text' class="form-control date-picker"/>
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    <input type="date" name="tgl_awal"  class="form-control" require/>
+                                    </div>
+                        
+                                    <h4 class="modal-title" id="myModalLabel">Tanggal Akhir</h4>
+
+                                    <div class='input-group date' id=''>
+                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                    <input type="date" name="tgl_akhir"  class="form-control" require/>
                                     </div>
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button class="btn btn-primary">Reset</button> -->
-                                        <button onclick="cek()" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary">Cari</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>

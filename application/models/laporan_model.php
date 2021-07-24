@@ -18,9 +18,9 @@ class Laporan_model extends CI_Model{
         }
     } 
     
-    public function get_dataMingguan($tgl_transaksi)
+    public function get_dataMingguan($tgl_awal, $tgl_akhir)
     {
-        $hasil = $this->db->query('SELECT tgl_transaksi, nama_customer, nama_stok, jml_detail, jasa_design, total_detail FROM tb_transaksi, tb_customer, tb_stok, tb_detail WHERE tb_transaksi.id_transaksi=tb_detail.id_transaksi AND tb_transaksi.id_customer=tb_customer.id_customer AND tb_detail.id_stok=tb_stok.id_stok AND tgl_transaksi like "2021-07-11%";');
+        $hasil = $this->db->query('SELECT tgl_transaksi, nama_customer, nama_stok, jml_detail, jasa_design, total_detail FROM tb_transaksi, tb_customer, tb_stok, tb_detail WHERE tb_transaksi.id_transaksi=tb_detail.id_transaksi AND tb_transaksi.id_customer=tb_customer.id_customer AND tb_detail.id_stok=tb_stok.id_stok AND (tb_transaksi.tgl_transaksi between "'.$tgl_awal.'" and "'.$tgl_akhir.'")');
         if($hasil->num_rows() > 0){
             return $hasil->result();
         }else {
