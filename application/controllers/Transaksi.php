@@ -13,6 +13,18 @@ class Transaksi extends CI_Controller {
         $this->load->model('stok_model');
     }
 
+    public function nota($id){
+        $datatrx = $this->transaksi_model->findDetail($id);
+        
+        $datadetail = $this->detail_model->getAllId($id);
+        $data = [
+            'datatrx' => $datatrx,
+            'datadetail' => $datadetail,
+            
+        ];
+
+        $this->load->view('nota', $data);
+    }
     public function add_order(){
         $datacus = $this->pelanggan_model->getAll();
         $datastok = $this->stok_model->getAll();

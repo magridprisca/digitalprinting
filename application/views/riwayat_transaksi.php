@@ -85,7 +85,8 @@
                                                 <td><?php echo $key->total_detail;?></td>
                                                 <td><?php echo $key->tgl_bayar;?></td>
                                                 <td><?php echo $key->ket_bayar;?></td>
-                                                <td><a href="<?=site_url()?>/Transaksi/riwayat_pembayaran/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-eye"></td>
+                                                <td><a href="<?=site_url()?>/Transaksi/riwayat_pembayaran/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-eye"></a>&nbsp&nbsp
+                                                <a href="<?=site_url()?>/Transaksi/nota/<?php echo "$key->id_transaksi"?>"><span class="fa fa-print"></a></td>
                                             </tr>
 											<?php }?>
                                     </table>
