@@ -117,7 +117,7 @@
                                                 <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Total Bayar</label>
                                         <div class="col-md-6 col-xs-12"> 
-                                            <input type="text" name="total_transaksi" value="<?= $total->total ?>" class="form-control">
+                                            <input type="text" name="total_transaksi" value="<?= $datatrx->total_transaksi ?>" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">

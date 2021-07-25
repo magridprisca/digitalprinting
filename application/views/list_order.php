@@ -93,7 +93,7 @@
                                             <tr>
                                                 <td><?php echo $key->id_transaksi;?></td>
                                                 <td><?php echo $key->tgl_transaksi;?></td>
-                                                <td><?php echo $key->id_customer;?></td>
+                                                <td><?php echo $key->nama_customer;?></td>
                                                 <td><?php echo $key->username;?></td>
 												<td><a href="<?=site_url()?>/Transaksi/add_order2/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
 												<a href="<?=site_url()?>/Karyawan/del_karyawan/<?php echo "$key->id_transaksi"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>

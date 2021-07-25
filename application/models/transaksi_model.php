@@ -30,8 +30,8 @@ class transaksi_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('tb_transaksi');
         $this->db->join('tb_user', 'tb_user.username = tb_transaksi.username');
-        $this->db->join('tb_detail', 'tb_detail.id_transaksi = tb_transaksi.id_transaksi');
-        $this->db->join('tb_stok', 'tb_stok.id_stok = tb_detail.id_stok');
+        // $this->db->join('tb_detail', 'tb_detail.id_transaksi = tb_transaksi.id_transaksi');
+        // $this->db->join('tb_stok', 'tb_stok.id_stok = tb_detail.id_stok');
         
         $this->db->join('tb_customer', 'tb_customer.id_customer = tb_transaksi.id_customer');
         $this->db->order_by("tb_transaksi.id_transaksi");
@@ -47,6 +47,7 @@ class transaksi_model extends CI_Model{
     public function getAll(){
         $this->db->select('*');
         $this->db->from('tb_transaksi');
+        $this->db->join('tb_customer', 'tb_customer.id_customer = tb_transaksi.id_customer');
         $this->db->join('tb_user', 'tb_user.username = tb_transaksi.username');
         $this->db->order_by("id_transaksi");
         $hasil = $this->db->get();

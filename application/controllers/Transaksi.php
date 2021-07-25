@@ -207,12 +207,12 @@ class Transaksi extends CI_Controller {
 				'total_transaksi' => $total_transaksi,
 				'dibayar' => $dibayar,
 				'tgl_bayar' => date('Y-m-d h:i:s'),
-				'ket_bayar' => 1,
+				// 'ket_bayar' => 1,
 			];
 			$insert = $this->transaksi_model->update($id_transaksi,$data);
 
 			if($insert){
-                echo '<script>alert("Pembayaran berhasik dilakukan.");window.location.href="'.site_url('/Transaksi/bayar/'.$id_transaksi).'";</script>';
+                echo '<script>alert("Pembayaran berhasil dilakukan.");window.location.href="'.site_url('/Transaksi/view_pembayaran/').'";</script>';
 				// redirect('Transaksi/bayar/'.$id_transaksi);
 			}else{
                 echo '<script>alert("Gagal menyimpan pembayaran.");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';

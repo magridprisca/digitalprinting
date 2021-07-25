@@ -69,8 +69,8 @@
                                                 <!-- <th>Nomor</th> -->
                                                 <th>Tanggal Transaksi</th>
                                                 <th>Nama Customer</th>
-                                                <th>Harga</th>
                                                 <th>Total</th>
+                                                <th>Dibayar</th>
                                                 <th>Tanggal Bayar</th>
                                                 <th>keterangan</th>
                                             </tr>
@@ -80,8 +80,8 @@
                                             <tr>
                                                 <td><?php echo $key->tgl_transaksi;?></td>
                                                 <td><?php echo $key->nama_customer;?></td>
-                                                <td><?php echo $key->harga_detail;?></td>
-                                                <td><?php echo $key->total_detail;?></td>
+                                                <td><?php echo $key->total_transaksi;?></td>
+                                                <td><?php echo $key->dibayar;?></td>
                                                 <td><?php echo $key->tgl_bayar;?></td>
                                                 <td><a href="<?=site_url()?>/Transaksi/bayar/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-check"></a></span></a></td>
         
