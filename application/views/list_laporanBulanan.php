@@ -76,17 +76,42 @@
                                     <form method="post" action="<?php echo site_url()?>/Laporan/view_laporanBulanan">
                                     <h4 class="modal-title" id="myModalLabel">Cari Data Periode</h4>
                                     </div>
-                                    <div class="modal-body">
-                                    <h4>Cari Periode Mutu dan Judul Mutu</h4>
+                                   <!--  <div class="modal-body">
+                                    <h4>Cari Periode Mutu dan Judul Mutu</h4> -->
                                     
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Bulan</label>
+                                        <div class="col-md-6 col-xs-12"> 
+                                            <select name="tgl_bln" class="form-control select">
+                                                <option value="01">Januari</option>
+                                                <option value="02">Februari</option>
+                                                <option value="03">Maret</option>
+                                                <option value="04">April</option>
+                                                <option value="05">Mei</option>
+                                                <option value="06">Juni</option>
+                                                <option value="07">Juli</option>
+                                                <option value="08">Agustus</option>
+                                                <option value="09">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
+                                        </div>
+                                            <span class="help-block">Pilih Bulan</span>
+                                        </div>
                                     
-                                    <div class='input-group date' id=''>
-                                    <input name="tgl_bln" id="" type='text' class="form-control "/>
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Tahun</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="tgl_thn" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Ex : 2010</span>
+                                        </div>
                                     </div>
-                                    </div>
+
+                                    <!-- </div> -->
                                     <div class="modal-footer">
                                         <!-- <button class="btn btn-primary">Reset</button> -->
                                         <button type="submit" class="btn btn-primary">Cari</button>

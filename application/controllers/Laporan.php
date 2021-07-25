@@ -33,8 +33,9 @@ class Laporan extends CI_Controller {
     public function view_laporanMingguan(){
         if (isset($_REQUEST['tgl_awal'])==null) 
         {
-        $tgl_awal = date('Y-m-d');
         $tgl_akhir = date('Y-m-d');
+        $tgl_awal = date('Y-m-d', strtotime('-6 days', strtotime( $tgl_akhir )));
+        
         }else{
             $tgl_awal = $this->input->post("tgl_awal");
             $tgl_akhir = $this->input->post("tgl_akhir");
@@ -54,7 +55,10 @@ class Laporan extends CI_Controller {
         {
         $tgl_transaksi = date('Y-m');
         }else{
-            $tgl_transaksi = $this->input->post("tgl_bln");
+             
+            $tgl_bln = $this->input->post('tgl_bln');
+            $tgl_thn = $this->input->post('tgl_thn');
+            $tgl_transaksi = $tgl_thn."-".$tgl_bln;
         }
         // echo $tgl_transaksi;
         // exit();
