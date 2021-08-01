@@ -39,114 +39,80 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Dashboard</li>
+                    <li class="active">Nota</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
                 
                 <!-- PAGE CONTENT WRAPPER -->
+
                 <div class="page-content-wrap">
-                
+                    
                     <div class="row">
                         <div class="col-md-12">
-                            
-                            <form class="form-horizontal"> 
-                            <div class="panel panel-default">
+                            <!-- Tables Goes Here :3 -->
+                            <!-- START BORDERED TABLE SAMPLE -->
+                            <div class="panel panel-default" name="panelprint">
+
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Form</strong> Riwayat Transaksi </h3>
-
                                     <div class="pull-right">                                                                                    
                                     <button class="btn btn-default" onclick="printDiv('printableArea')"><span class="fa fa-print"></span> Cetak Halaman</button>
                                     </div>
+                                </div>
+                                <div class="panel-body"  id="printableArea">
 
-                                    <!-- <ul class="panel-controls">
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                                    </ul> -->
-                                </div>
-                                <div class="panel-body">
-                                    
-                                </div>
-                                <div class="panel-body">                                                                        
-                                   
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Tanggal Order</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            
-                                                <?= $datatrx->tgl_transaksi ?>
-                                            <!-- </div> -->
-                                           
-                                        </div>
+                                    <h2 align="center">NOTA PEMBAYARAN</h2>  
+                                    <h3 align="center">Amanah Digital printing</h3>  
+                                    <hr>
+                                    <div class="row">
+                                        <label class="col-md-3">Tanggal Order</label>
+                                        <label class="col-md-6">: <?= $datatrx->tgl_transaksi ?></label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Username</label>
+                                        <label class="col-md-6">: <?= $datatrx->nama_lengkap;?></label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Customer</label>
+                                        <label class="col-md-6">: <?= $datatrx->nama_customer;?></label>
                                     </div>
                                     
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
-                                        <div class="col-md-6 col-xs-12">   
-                                            <div class="input-group">
-                                                <!-- <span class="input-group-addon"><span class="fa fa-pencil"></span></span> -->
-                                                <?= $datatrx->nama_lengkap;?>
-                                                
-                                            </div>
-                                            <!-- <span class="help-block">Daftar Username</span> -->
+                                    <div class="form-group" id="detail_transaksi">
+                                        <h4 align="center">Detail Order</h4>  
+                                        <div class="table">  
+                                            <table class="table table-bordered" id="dynamic_field">  
+                                                <tr>
+                                                    <th>Nama Barang</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Harga</th>
+                                                    <th>Jasa Design</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                                <?php foreach ($datadetail as $key) { ?>
+                                                <tr>
+                                                    <td><?php echo $key->nama_stok;?></td>
+                                                    <td><?php echo $key->jml_detail;?></td>
+                                                    <td><?php echo $key->harga_detail;?></td>
+                                                    <td><?php echo $key->jasa_design;?></td>
+                                                    <td><?php echo $key->total_detail;?></td>
+                                                </tr>
+                                                <?php }?>
+                                            </table>  
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Customer</label>
-                                        <div class="col-md-6 col-xs-12"> 
-                                                 
-                                            <span class="help-block">Pilih Customer</span>
-                                        </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Total Bayar</label>
+                                        <label class="col-md-6">: <?= $datatrx->total_transaksi ?></label>
                                     </div>
-                                    
-                                    <!-- <div class="container"> -->
-                                        <div class="form-group" id="detail_transaksi">
-                                        <h2 align="center">Detail Order</h2>  
-                                                <div class="table">  
-                                
-                                                    <table class="table table-bordered" id="dynamic_field">  
-                                                        <tr>
-                                                            <th>Nama Barang</th>
-                                                            <th>Jumlah</th>
-                                                            <th>Harga</th>
-                                                            <th>Jasa Design</th>
-                                                            <th>Total</th>
-                        
-                                                        </tr>
-                                                        <?php foreach ($datadetail as $key) { ?>
-                                                        <tr>
-                                                            <td><?php echo $key->nama_stok;?></td>
-                                                            <td><?php echo $key->jml_detail;?></td>
-                                                            <td><?php echo $key->harga_detail;?></td>
-                                                            <td><?php echo $key->jasa_design;?></td>
-                                                            <td><?php echo $key->total_detail;?></td>
-                
-                                                        </tr>
-                                                        <?php }?>
-                                                        
-                                                    </table>  
-                                                </div>
-                                                <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Total Bayar</label>
-                                        <div class="col-md-6 col-xs-12"> 
-                                            <input type="text" name="total_transaksi" value="<?= $datatrx->total_transaksi ?>" class="form-control">
-                                        </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Jumlah Bayar</label>
+                                        <label class="col-md-6">: <?= $datatrx->dibayar;?>
+                                        </label>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Bayar</label>
-                                        <div class="col-md-6 col-xs-12"> 
-                                            <input type="text" name="dibayar" value="<?= $datatrx->dibayar;?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    
-                                        </div> 
-                                    <!-- </div> -->
-                                    
-                                 
-                                </div>
-                                
+                                </div> 
                             </div>
-                            </form>
-                            
                         </div>
-                    </div>     
+                    </div>
                     
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->                                
