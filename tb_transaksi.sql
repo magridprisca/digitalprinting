@@ -11,7 +11,7 @@
  Target Server Version : 100406
  File Encoding         : 65001
 
- Date: 11/07/2021 15:55:18
+ Date: 07/08/2021 16:53:27
 */
 
 SET NAMES utf8mb4;
@@ -26,18 +26,19 @@ CREATE TABLE `tb_transaksi`  (
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `id_customer` int(11) NULL DEFAULT NULL,
   `tgl_transaksi` date NULL DEFAULT NULL,
-  `total_transaksi` int(11) NULL DEFAULT NULL,
+  `jenis_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `total_transaksi` int(11) NULL DEFAULT 0,
+  `diskon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `dibayar` int(11) NULL DEFAULT 0,
   `tgl_bayar` datetime(0) NULL DEFAULT NULL,
   `ket_bayar` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id_transaksi`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_transaksi
 -- ----------------------------
-INSERT INTO `tb_transaksi` VALUES (1, 'magrid', 1, '2021-05-22', 0, 0, '2021-07-11 15:53:47', 0);
-INSERT INTO `tb_transaksi` VALUES (2, 'magrid', 1, '2021-07-05', NULL, NULL, NULL, NULL);
-INSERT INTO `tb_transaksi` VALUES (3, 'magrid', 1, '2021-07-11', NULL, NULL, NULL, NULL);
+INSERT INTO `tb_transaksi` VALUES (6, 'magrid', 1, '2021-07-25', NULL, 137000, NULL, 0, NULL, 0);
+INSERT INTO `tb_transaksi` VALUES (7, 'magrid', 3, '2021-08-07', 'Instansi', 37000, '2000', 35000, '2021-08-07 11:19:16', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

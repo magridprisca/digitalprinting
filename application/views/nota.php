@@ -105,11 +105,39 @@
                                         <label class="col-md-3">Total Bayar</label>&nbsp&nbsp&nbsp&nbsp
                                         <label class="col-md-6">: <?= $datatrx->total_transaksi ?></label>
                                     </div>
+                                    <?php if($datatrx->jenis_customer=="Instansi"){ ?>
+                                    <div class="row">
+                                        <label class="col-md-3">Diskon</label>
+                                        <label class="col-md-6">: <?= $datatrx->diskon;?>
+                                        </label>
+                                    </div>
                                     <div class="row">
                                         <label class="col-md-3">Jumlah Bayar</label>
                                         <label class="col-md-6">: <?= $datatrx->dibayar;?>
                                         </label>
                                     </div>
+                                    <?php } ?>
+                                    
+                                    <?php if($datatrx->jenis_customer=="Reseler"){ ?>
+                                    <div class="row">
+                                        <label class="col-md-3">Diskon</label>
+                                        <label class="col-md-6">: <?= $datatrx->diskon;?>
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3">Jumlah Bayar</label>
+                                        <label class="col-md-6">: <?= $datatrx->total_transaksi;?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
+                                    
+                                    <?php if($datatrx->jenis_customer=="Umum"){ ?>
+                                    <div class="row">
+                                        <label class="col-md-3">Jumlah Bayar</label>
+                                        <label class="col-md-6">: <?= $datatrx->total_transaksi;?>
+                                        </label>
+                                    </div>
+                                    <?php } ?>
                                 </div> 
                             </div>
                         </div>

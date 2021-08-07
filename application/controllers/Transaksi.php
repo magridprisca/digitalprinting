@@ -219,23 +219,40 @@ class Transaksi extends CI_Controller {
 		} else {
 			$id_transaksi = $this->input->post('id_transaksi');
 			$total_transaksi = $this->input->post('total_transaksi');
+			$jenis_customer = $this->input->post('jenis_customer');
+			$diskon = $this->input->post('diskon');
 			$dibayar = $this->input->post('dibayar');
 			
 			$data = [
 				'total_transaksi' => $total_transaksi,
 				'dibayar' => $dibayar,
+				'jenis_customer' => $jenis_customer,
+				'diskon' => $diskon,
 				'tgl_bayar' => date('Y-m-d h:i:s'),
 				// 'ket_bayar' => 1,
 			];
 			$insert = $this->transaksi_model->update($id_transaksi,$data);
 
 			if($insert){
-                echo '<script>alert("Pembayaran berhasil dilakukan.");window.location.href="'.site_url('/Transaksi/view_pembayaran/').'";</script>';
+                echo '<script>alert("Pembayaran berhasil dilakukan.");window.location.href="'.site_url('/Transaksi/nota/'.$id_transaksi).'";</script>';
 				// redirect('Transaksi/bayar/'.$id_transaksi);
 			}else{
                 echo '<script>alert("Gagal menyimpan pembayaran.");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
             }
 		}
+    }
+    public function lunas($id_transaksi){
+			$data = [
+				'ket_bayar' => 1,
+			];
+			$insert = $this->transaksi_model->update($id_transaksi,$data);
+
+			if($insert){
+                echo '<script>alert("Pembayaran transaksi selesai.");window.location.href="'.site_url('/Transaksi/view_pembayaran/').'";</script>';
+				// redirect('Transaksi/bayar/'.$id_transaksi);
+			}else{
+                echo '<script>alert("Gagal menyimpan pembayaran.");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
+            }
     }
 
     public function riwayat_pembayaran($id){
