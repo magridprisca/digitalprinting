@@ -84,7 +84,9 @@
                                             </select>           
                                             <span class="help-block">Pilih Customer</span>
                                         </div>
+
                                     </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
 									
                                     <!-- <div class="container"> -->
                                         <div class="form-group" id="detail_transaksi">
@@ -96,6 +98,8 @@
                                                     <table class="table table-bordered" id="dynamic_field">  
                                                         <tr>
                                                             <th>Nama Barang</th>
+                                                            <th>Ukuran</th>
+                                                        
                                                             <th>Jumlah</th>
                                                             <th>Harga</th>
                                                             <th>Jasa Design</th>
@@ -105,6 +109,7 @@
                                                         <?php foreach ($datadetail as $key) { ?>
                                                         <tr>
                                                             <td><?php echo $key->nama_stok;?></td>
+                                                            <td><?php echo $key->panjang." x ". $key->lebar;?></td>
                                                             <td><?php echo $key->jml_detail;?></td>
                                                             <td><?php echo $key->harga_detail;?></td>
                                                             <td><?php echo $key->jasa_design;?></td>
@@ -139,7 +144,7 @@
                                 </div>
                                 <div class="panel-footer">
                                     <button type="reset" class="btn btn-default">Clear Form</button>                                    
-                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    
                                 </div>
                             </div>
                             </form>
@@ -191,6 +196,12 @@
                        }
                     </script>
                     <div class="form-group">
+                        <label for="panjang">Ukuran Panjang</label>
+                        <input type="number" class="form-control" name="panjang" id="panjang" onchange="hitung()" placeholder="Jumlah Pesan" require/>
+                    </div><div class="form-group">
+                        <label for="lebar">Ukuran Lebar</label>
+                        <input type="number" class="form-control" name="lebar" id="lebar" onchange="hitung()" placeholder="Jumlah Pesan" require/>
+                    </div><div class="form-group">
                         <label for="jml_detail">Jumlah</label>
                         <input type="number" class="form-control" name="jml_detail" id="jml_detail" onchange="hitung()" placeholder="Jumlah Pesan" require/>
                     </div>

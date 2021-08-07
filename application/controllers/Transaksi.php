@@ -79,6 +79,8 @@ class Transaksi extends CI_Controller {
     
     public function addorder_process2(){
         $this->form_validation->set_rules('id_stok', 'Nama stok', 'required');
+        $this->form_validation->set_rules('id_stok', 'Panjang', 'required');
+        $this->form_validation->set_rules('id_stok', 'Lebar', 'required');
 		$this->form_validation->set_rules('jml_detail', 'Jumlah', 'required');
 		$this->form_validation->set_rules('harga_detail', 'Harga', 'required');
         if ($this->form_validation->run() == FALSE) {
@@ -87,7 +89,9 @@ class Transaksi extends CI_Controller {
 
 		} else {
 			$id_transaksi = $this->input->post('id_transaksi');
-			$id_stok = $this->input->post('id_stok');
+            $id_stok = $this->input->post('id_stok');
+            $panjang = $this->input->post('panjang');
+			$lebar = $this->input->post('lebar');
 			$jml_detail = $this->input->post('jml_detail');
 			$harga_detail = $this->input->post('harga_detail');
 			$jasa_design = $this->input->post('jasa_design');
@@ -95,7 +99,9 @@ class Transaksi extends CI_Controller {
 			
 			$data = [
 				'id_transaksi' => $id_transaksi,
-				'id_stok' => $id_stok,
+                'id_stok' => $id_stok,
+                'panjang' => $panjang,
+				'lebar' => $lebar,
 				'jml_detail' => $jml_detail,
 				'harga_detail' => $harga_detail,
 				'jasa_design' => $jasa_design,
