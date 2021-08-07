@@ -70,11 +70,11 @@
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">Username</label>
-                                        <label class="col-md-6">: <?= $datatrx->nama_lengkap;?></label>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_lengkap;?></label>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">Customer</label>
-                                        <label class="col-md-6">: <?= $datatrx->nama_customer;?></label>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_customer;?></label>
                                     </div>
                                     
                                     <div class="form-group" id="detail_transaksi">
@@ -83,6 +83,7 @@
                                             <table class="table table-bordered" id="dynamic_field">  
                                                 <tr>
                                                     <th>Nama Barang</th>
+                                                    <th>Ukuran</th>
                                                     <th>Jumlah</th>
                                                     <th>Harga</th>
                                                     <th>Jasa Design</th>
@@ -91,7 +92,7 @@
                                                 <?php foreach ($datadetail as $key) { ?>
                                                 <tr>
                                                     <td><?php echo $key->nama_stok;?></td>
-                                                    <td><?php echo $key->jml_detail;?></td>
+                                                    <td><?php echo $key->panjang." x ". $key->lebar;?></td><td><?php echo $key->jml_detail;?></td>
                                                     <td><?php echo $key->harga_detail;?></td>
                                                     <td><?php echo $key->jasa_design;?></td>
                                                     <td><?php echo $key->total_detail;?></td>
@@ -101,7 +102,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Total Bayar</label>
+                                        <label class="col-md-3">Total Bayar</label>&nbsp&nbsp&nbsp&nbsp
                                         <label class="col-md-6">: <?= $datatrx->total_transaksi ?></label>
                                     </div>
                                     <div class="row">
