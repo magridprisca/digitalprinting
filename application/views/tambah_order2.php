@@ -111,6 +111,8 @@
  											<th>Jumlah</th>
  											<th>Harga</th>
  											<th>Jasa Design</th>
+                                            <th>Lain-lain</th>
+                                            <th>Biaya Lain-lain</th>
  											<th>Total</th>
  											<th>Aksi</th>
  										</tr>
@@ -122,28 +124,15 @@
  											<td><?php echo $key->jml_detail;?></td>
  											<td><?php echo $key->harga_detail;?></td>
  											<td><?php echo $key->jasa_design;?></td>
+                                            <td><?php echo $key->lain_lain;?></td>
+                                            <td><?php echo $key->biaya_lain;?></td>
  											<td><?php echo $key->total_detail;?></td>
  											<!-- <td><a href="<?=site_url()?>/Transaksi/update_karyawan/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp -->
  											<td><a href="<?=site_url()?>/Transaksi/del_detail/<?php echo "$key->id_detail"?>/<?php echo "$key->id_transaksi"?>"
  													onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
  										</tr>
  										<?php }?>
- 										<!-- <tr>  
-                                                            <td>
-                                                            <select name="addmore[][id_stok]" class="form-control">
-                                                                <option value="">Pilih Stok Bahan</option>
-                                                                <?php foreach ($datastok as $key) { ?>
-                                                                <option value="<?= $key->id_stok.";".$key->harga_stok;?>"><?= $key->nama_stok.' '. $key->panjang_stok.'x'.$key->lebar_stok.' '.$key->satuan_stok;?></option>
-                                                            <?php }?>
-                                                            </select>   
-                                                            <input type="text" name="addmore[][id_stok]" class="form-control" required="" />  
-                                                            </td>
-                                                            <td><input type="text" name="addmore2[][jml_detail]" class="form-control " required="" /></td>  
-                                                            <td><input type="text" name="addmore3[][harga_detail]" class="form-control" required="" /></td>  
-                                                            <td><input type="text" name="addmore4[][jasa_design]" class="form-control" required="" /></td>  
-                                                            <td><input type="text" name="addmore5[][total]" class="form-control" required="" /></td>  
-                                                            <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
-                                                        </tr>   -->
+ 										
  									</table>
  								</div>
 
@@ -208,14 +197,15 @@
  							var jumlah = parseInt($("#jml_detail").val());
  							var harga = parseInt($("#harga_detail").val());
  							var jasa_design = parseInt($("#jasa_design").val());
+                            var biaya_lain = parseInt($("#biaya_lain").val());
 
  							if (jenis == "Banner") {
  								panjang = panjang / 100;
  								lebar = lebar / 100;
- 								var hasil = (panjang * lebar * jumlah * harga) + jasa_design;
+ 								var hasil = (panjang * lebar * jumlah * harga) + jasa_design + biaya_lain;
 
  							} else {
- 								var hasil = (jumlah * harga) + jasa_design;
+ 								var hasil = (jumlah * harga) + jasa_design + biaya_lain;
  							}
  							console.log(hasil);
  							$("#total").val(hasil);
@@ -257,6 +247,16 @@
  						<input type="number" class="form-control" name="jasa_design" id="jasa_design"
  							onchange="hitung()" placeholder="Biaya Jasa Design" require />
  					</div>
+                    <div class="form-group">
+                        <label for="jenis">Lain-lain</label>
+                        <input type="text" class="form-control" name="lain_lain" id="lain_lain"
+                            placeholder="Lain-lain" require />
+                    </div>
+                    <div class="form-group">
+                        <label for="jasa_design">Biaya Lain-lain</label>
+                        <input type="number" class="form-control" name="biaya_lain" id="biaya_lain"
+                            onchange="hitung()" placeholder="Biaya Lain-lain" require />
+                    </div>
  					<div class="form-group">
  						<label for="total">Total</label>
  						<input type="number" class="form-control" name="total" id="total" placeholder="Total Harga"
