@@ -176,6 +176,8 @@
  				<form role="form" method="post" action="<?php echo site_url() ?>/Transaksi/addorder_process2">
  					<input type="hidden" class="form-control" name="id_transaksi" id="id_transaksi"
  						value="<?= $datatrx->id_transaksi;?>" />
+ 					<input type="text" class="form-control" name="jenis_cust" id="jenis_cust"
+ 						value="<?= $datatrx->keterangan;?>" />
  					<div class="form-group">
  						<label for="inputName">Nama Barang</label>
  						<select name="id_stok" id="id_stok" onchange="tambah()" class="form-control" require>
@@ -195,7 +197,7 @@
  							var lebar = parseInt($("#lebar").val());
 
  							var jumlah = parseInt($("#jml_detail").val());
- 							var harga = parseInt($("#harga_detail").val());
+ 							var harga = parseInt($("#harga_detail").val())-parseInt($("#potongan").val());
  							var jasa_design = parseInt($("#jasa_design").val());
                             var biaya_lain = parseInt($("#biaya_lain").val());
 
@@ -240,8 +242,17 @@
  					<div class="form-group">
  						<label for="harga_detail">Harga</label>
  						<input type="number" class="form-control" name="harga_detail" id="harga_detail"
- 							onchange="hitung()" placeholder="Harga Satuan" require />
+ 							onchange="hitung()" placeholder="Harga Satuan" value="0" require />
  					</div>
+
+					<?php if($datatrx->keterangan!="Umum"){ ?>
+						<div class="form-group">
+ 						<label for="potongan">Potongan Harga</label>
+ 						<input type="number" class="form-control" name="potongan" id="potongan"
+ 							onchange="hitung()" placeholder="Potongan Harga yang diberikan" value="0" require />
+ 						</div>
+					<?php } ?>
+
  					<div class="form-group">
  						<label for="jasa_design">Jasa Design</label>
  						<input type="number" class="form-control" name="jasa_design" id="jasa_design"
@@ -255,7 +266,7 @@
                     <div class="form-group">
                         <label for="jasa_design">Biaya Lain-lain</label>
                         <input type="number" class="form-control" name="biaya_lain" id="biaya_lain"
-                            onchange="hitung()" placeholder="Biaya Lain-lain" require />
+                            onchange="hitung()" value="0" placeholder="Biaya Lain-lain" require />
                     </div>
  					<div class="form-group">
  						<label for="total">Total</label>

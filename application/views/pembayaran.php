@@ -83,9 +83,13 @@
                                                 <td><?php echo $key->total_transaksi;?></td>
                                                 <td><?php echo $key->dibayar;?></td>
                                                 <td><?php echo $key->tgl_bayar;?></td>
-                                                <td><a href="<?=site_url()?>/Transaksi/bayar/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-money"></a></span></a> &nbsp;
-                                                <a href="<?=site_url()?>/Transaksi/lunas/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-check">Lunas</a></span></a>
-                                            </td>
+                                                <td>
+                                                <?php if($key->dibayar < $key->total_transaksi) {?>
+                                                <a href="<?=site_url()?>/Transaksi/bayar/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-money"> Bayar</a></span></a> &nbsp;
+                                                <?php } if($key->dibayar >= $key->total_transaksi) {?>
+                                                <a href="<?=site_url()?>/Transaksi/lunas/<?php echo "$key->id_transaksi"?>" ><span class="fa fa-check"> Lunas</a></span></a>
+                                                <?php } ?>
+                                                </td>
         
                                             </tr>
 											<?php }?>

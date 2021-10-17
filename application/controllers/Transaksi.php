@@ -101,6 +101,7 @@ class Transaksi extends CI_Controller {
             $jasa_design = $this->input->post('jasa_design');
             $lain_lain = $this->input->post('lain_lain');
             $biaya_lain = $this->input->post('biaya_lain');
+            $potongan = $this->input->post('potongan');
 			$total = $this->input->post('total');
 			
 			$data = [
@@ -115,6 +116,7 @@ class Transaksi extends CI_Controller {
 				'jasa_design' => $jasa_design,
                 'lain_lain' => $lain_lain,
                 'biaya_lain' => $biaya_lain,
+                'potongan' => $potongan,
 				'total_detail' => $total,
                 'date_created' => date("Y-m-d h:i:s")
 			];
@@ -129,7 +131,7 @@ class Transaksi extends CI_Controller {
     }
 
     public function view_order(){
-        $datatransaksi = $this->transaksi_model->getAll();
+        $datatransaksi = $this->transaksi_model->get_datapembayaran();
         $data = [
             'datatransaksi' => $datatransaksi,
         ];
