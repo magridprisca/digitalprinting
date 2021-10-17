@@ -98,7 +98,9 @@ class Transaksi extends CI_Controller {
 			$lebar = $this->input->post('lebar');
 			$jml_detail = $this->input->post('jml_detail');
 			$harga_detail = $this->input->post('harga_detail');
-			$jasa_design = $this->input->post('jasa_design');
+            $jasa_design = $this->input->post('jasa_design');
+            $lain_lain = $this->input->post('lain_lain');
+            $biaya_lain = $this->input->post('biaya_lain');
 			$total = $this->input->post('total');
 			
 			$data = [
@@ -111,6 +113,8 @@ class Transaksi extends CI_Controller {
 				'jml_detail' => $jml_detail,
 				'harga_detail' => $harga_detail,
 				'jasa_design' => $jasa_design,
+                'lain_lain' => $lain_lain,
+                'biaya_lain' => $biaya_lain,
 				'total_detail' => $total,
                 'date_created' => date("Y-m-d h:i:s")
 			];

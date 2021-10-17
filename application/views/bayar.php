@@ -105,6 +105,8 @@
  											<th>Jumlah</th>
  											<th>Harga</th>
  											<th>Jasa Design</th>
+                                            <th>Lain-lain</th>
+                                            <th>Biaya Lain-lain</th>
  											<th>Total</th>
 
  										</tr>
@@ -115,6 +117,8 @@
  											<td><?php echo $key->jml_detail;?></td>
  											<td><?php echo $key->harga_detail;?></td>
  											<td><?php echo $key->jasa_design;?></td>
+                                            <td><?php echo $key->lain_lain;?></td>
+                                            <td><?php echo $key->biaya_lain;?></td>
  											<td><?php echo $key->total_detail;?></td>
 
  										</tr>
