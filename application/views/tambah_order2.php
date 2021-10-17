@@ -189,10 +189,10 @@
  						value="<?= $datatrx->id_transaksi;?>" />
  					<div class="form-group">
  						<label for="inputName">Nama Barang</label>
- 						<select name="id_stok" id="id_stok" class="form-control" require>
+ 						<select name="id_stok" id="id_stok" onchange="tambah()" class="form-control" require>
  							<option value="">Pilih Stok Bahan</option>
  							<?php foreach ($datastok as $key) { ?>
- 							<option value="<?= $key->id_stok.";".$key->harga_stok;?>">
+ 							<option value="<?= $key->id_stok ;?>">
  								<?= $key->nama_stok.' '. $key->panjang_stok.'x'.$key->lebar_stok.' '.$key->satuan_stok;?>
  							</option>
  							<?php }?>
@@ -273,3 +273,35 @@
  		</div>
  	</div>
  </div>
+
+ <script>
+        function tambah(){
+        var id_stok=$('#id_stok').val();
+        var fungsi='2';
+		console.log(id_stok);
+			
+        $.ajax({
+            url     : "<?php echo site_url(); ?>/Stok/cariData_stok?fungsi=2&id_stok="+id_stok,
+            type    : "GET",
+            success : function(result){
+				const obj = JSON.parse(result);
+                 if(obj['status']){
+                    var jenis = obj['data']['jenis_stok'];
+					var panjang = obj['data']['panjang_stok'];
+					var lebar = obj['data']['lebar_stok'];
+					var harga = obj['data']['harga_stok'];
+                    $('#jenis').val(jenis);
+                    $('#panjang').val(panjang);
+                    $('#lebar').val(lebar);
+					$("#harga_detail").val(harga);
+                }else{
+                    alert("Nomor data tidak ditemukan!");
+                } 
+            },  
+
+			error: function(data) { 
+    		console.log(data)
+  			}
+        });
+    }
+</script>

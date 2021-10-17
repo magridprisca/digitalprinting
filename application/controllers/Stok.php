@@ -165,6 +165,31 @@ class Stok extends CI_Controller {
             }
         }
     }
+
+    public function cariData_stok () {
+    	$fungsi	= $this->input->get('fungsi');
+
+        if($fungsi == 1) {
+            $sql = 'SELECT * FROM tb_stok';
+        } else if ($fungsi == 2) {
+            $id_stok = $this->input->get('id_stok');
+            $sql = 'SELECT * FROM tb_stok WHERE id_stok='. $id_stok . '';
+        }
+
+        $data = $this->db->query ($sql)->row();
+
+    	if($data) {
+    		echo json_encode ([
+    			'status' => true,
+    			'data'   => $data,
+            ]);
+    	} else {
+    		echo json_encode ([
+    			'status' => false,
+    			'data'   => 'Informasi yang anda masukkan salah!'
+    		]);
+        }
+	}
    
 
 } 
