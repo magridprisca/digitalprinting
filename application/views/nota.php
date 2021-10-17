@@ -111,7 +111,7 @@
                                     </div>
                                     <?php if($datatrx->jenis_customer=="Instansi"){ ?>
                                     <div class="row">
-                                        <label class="col-md-3">Diskon</label>
+                                        <label class="col-md-3">Diskon</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                         <label class="col-md-6">: <?= $datatrx->diskon;?>
                                         </label>
                                     </div>
