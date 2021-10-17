@@ -104,6 +104,7 @@
  											<th>Ukuran</th>
  											<th>Jumlah</th>
  											<th>Harga</th>
+ 											<th>Potongan</th>
  											<th>Jasa Design</th>
                                             <th>Lain-lain</th>
                                             <th>Biaya Lain-lain</th>
@@ -116,6 +117,7 @@
  											<td><?php echo $key->panjang." x ". $key->lebar;?></td>
  											<td><?php echo $key->jml_detail;?></td>
  											<td><?php echo $key->harga_detail;?></td>
+ 											<td><?php echo $key->potongan;?></td>
  											<td><?php echo $key->jasa_design;?></td>
                                             <td><?php echo $key->lain_lain;?></td>
                                             <td><?php echo $key->biaya_lain;?></td>
@@ -137,9 +139,9 @@
  									<label class="col-md-3 col-xs-12 control-label">Jenis Pelanggan</label>
  									<div class="col-md-6 col-xs-12">
  										<select name="jenis_customer" id="jenis_customer" class="form-control">
-                                            <option value="Umum">Umum</option>
-                                            <option value="Instansi">Instansi</option>
-                                            <option value="Reseler">Reseler</option>
+                                            <option value="Umum" <?php if ($datatrx->keterangan=="Umum"){echo "selected"; } ?>>Umum</option>
+                                            <option value="Instansi" <?php if ($datatrx->keterangan=="Instansi"){echo "selected"; } ?>>Instansi</option>
+                                            <option value="Reseler" <?php if ($datatrx->keterangan=="Reseler"){echo "selected"; } ?>>Reseler</option>
                                         </select>
  									</div>
  								</div>

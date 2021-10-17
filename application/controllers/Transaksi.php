@@ -103,6 +103,7 @@ class Transaksi extends CI_Controller {
             $biaya_lain = $this->input->post('biaya_lain');
             $potongan = $this->input->post('potongan');
 			$total = $this->input->post('total');
+			$sebelum_diskon = $this->input->post('sebelum_diskon');
 			
 			$data = [
 				'id_transaksi' => $id_transaksi,
@@ -118,6 +119,7 @@ class Transaksi extends CI_Controller {
                 'biaya_lain' => $biaya_lain,
                 'potongan' => $potongan,
 				'total_detail' => $total,
+				'sebelum_diskon' => $sebelum_diskon,
                 'date_created' => date("Y-m-d h:i:s")
 			];
 			$insert = $this->detail_model->create($data);

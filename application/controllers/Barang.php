@@ -53,11 +53,10 @@ class Barang extends CI_Controller {
                 'lebar' => $lebar,
                 'satuan' => $satuan,
                 'jml_barang' => $jml_barang,
-                'jml_beli' => $jml_beli,
                 'tgl_diterima' => $tgl_diterima,
                 'supplier' => $supplier,
                 'username' => $username,
-                'date_created' => date("Y-m-d h:i:s")
+                'date_create' => date("Y-m-d h:i:s")
             ];
             $insert = $this->barang_model->create($data);
             if($insert){

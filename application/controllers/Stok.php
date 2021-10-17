@@ -74,6 +74,7 @@ class Stok extends CI_Controller {
                     $data = [
                         'id_barang' => $id_barang,
                         'nama_stok' => $nama_stok,
+                        'jenis_stok' => $jenis_stok,
                         'panjang_stok' => $panjang_stok,
                         'lebar_stok' => $lebar_value,
                         'satuan_barang' => $satuan_barang,

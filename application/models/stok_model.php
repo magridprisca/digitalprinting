@@ -18,7 +18,7 @@ class Stok_model extends CI_Model{
     public function getAll(){
 		$this->db->select('*');
         $this->db->from('tb_stok');
-        $this->db->join('tb_barangmasuk', 'tb_barangmasuk.nama_barang = tb_stok.nama_stok');
+        // $this->db->join('tb_barangmasuk', 'tb_barangmasuk.nama_barang = tb_stok.nama_stok');
         $this->db->order_by("id_stok");
         $hasil = $this->db->get();
         if($hasil->num_rows() > 0){

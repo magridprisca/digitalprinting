@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">Customer</label>
-                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_customer;?></label>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_customer." ".$datatrx->keterangan;?></label>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">No HP</label>
@@ -100,7 +100,8 @@
                                                     <th>Biaya Lain-lain</th>
                                                     <th>Total</th>
                                                 </tr>
-                                                <?php foreach ($datadetail as $key) { ?>
+                                                <?php $hargareseler=0;
+                                                foreach ($datadetail as $key) { ?>
                                                 <tr>
                                                     <td><?php echo $key->nama_stok;?></td>
                                                     <td><?php echo $key->panjang." x ". $key->lebar;?></td><td><?php echo $key->jml_detail;?></td>
@@ -110,50 +111,27 @@
                                                     <td><?php echo $key->biaya_lain;?></td>
                                                     <td><?php echo $key->total_detail;?></td>
                                                 </tr>
-                                                <?php }?>
+                                                <?php 
+                                                $hargareseler += $key->total_detail;
+                                            }?>
                                             </table>  
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">Total Bayar</label>&nbsp&nbsp&nbsp&nbsp
-                                        <label class="col-md-6">: <?= $datatrx->total_transaksi ?></label>
+                                        <label class="col-md-6">: <?php if($datatrx->keterangan=="Instansi"){ echo $hargareseler; } else {echo $datatrx->total_transaksi;} ?></label>
                                     </div>
-                                    <?php if($datatrx->jenis_customer=="Instansi"){ ?>
-                                    <div class="row">
-                                        <label class="col-md-3">Diskon</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        <label class="col-md-6">: <?= $datatrx->diskon;?>
-                                        </label>
-                                    </div>
-                                    <div class="row">
-                                        <label class="col-md-3">Jumlah Bayar</label>
-                                        <label class="col-md-6">: <?= $datatrx->dibayar;?>
-                                        </label>
-                                    </div>
-                                    <?php } ?>
                                     
-                                    <?php if($datatrx->jenis_customer=="Reseler"){ ?>
-                                    <div class="row">
-                                        <label class="col-md-3">Diskon</label>
-                                        <label class="col-md-6">: <?= $datatrx->diskon;?>
-                                        </label>
-                                    </div>
                                     <div class="row">
                                         <label class="col-md-3">Jumlah Bayar</label>
-                                        <label class="col-md-6">: <?= $datatrx->total_transaksi;?>
+                                        <label class="col-md-6">: <?php if($datatrx->keterangan=="Instansi"){ echo $hargareseler; } else {echo $datatrx->dibayar;} ?>
+                                        
                                         </label>
                                     </div>
-                                    <?php } ?>
                                     
-                                    <?php if($datatrx->jenis_customer=="Umum"){ ?>
-                                    <div class="row">
-                                        <label class="col-md-3">Jumlah Bayar</label>
-                                        <label class="col-md-6">: <?= $datatrx->total_transaksi;?>
-                                        </label>
-                                    </div>
-                                    <?php } ?>
                                     <div class="row">
                                         <label class="col-md-3">Kembali</label>&nbsp&nbsp&nbsp&nbsp
-                                        <label class="col-md-6">: <?= $datatrx->kembali ?></label>
+                                        <label class="col-md-6">: <?php if($datatrx->keterangan=="Instansi"){ echo "0"; } else {echo $datatrx->kembali;}?></label>
                                     </div>
                                 </div> 
                             </div>

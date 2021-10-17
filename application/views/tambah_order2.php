@@ -176,7 +176,7 @@
  				<form role="form" method="post" action="<?php echo site_url() ?>/Transaksi/addorder_process2">
  					<input type="hidden" class="form-control" name="id_transaksi" id="id_transaksi"
  						value="<?= $datatrx->id_transaksi;?>" />
- 					<input type="text" class="form-control" name="jenis_cust" id="jenis_cust"
+ 					<input type="hidden" class="form-control" name="jenis_cust" id="jenis_cust"
  						value="<?= $datatrx->keterangan;?>" />
  					<div class="form-group">
  						<label for="inputName">Nama Barang</label>
@@ -198,6 +198,7 @@
 
  							var jumlah = parseInt($("#jml_detail").val());
  							var harga = parseInt($("#harga_detail").val())-parseInt($("#potongan").val());
+ 							var harga_sebelumdiskon = parseInt($("#harga_detail").val());
  							var jasa_design = parseInt($("#jasa_design").val());
                             var biaya_lain = parseInt($("#biaya_lain").val());
 
@@ -205,12 +206,15 @@
  								panjang = panjang / 100;
  								lebar = lebar / 100;
  								var hasil = (panjang * lebar * jumlah * harga) + jasa_design + biaya_lain;
+ 								var hasil_sebelumdiskon = (panjang * lebar * jumlah * harga_sebelumdiskon) + jasa_design + biaya_lain;
 
  							} else {
  								var hasil = (jumlah * harga) + jasa_design + biaya_lain;
+								var hasil_sebelumdiskon = (jumlah * harga_sebelumdiskon) + jasa_design + biaya_lain;
  							}
  							console.log(hasil);
  							$("#total").val(hasil);
+ 							$("#sebelum_diskon").val(hasil_sebelumdiskon);
  						}
 
  					</script>
@@ -272,6 +276,7 @@
  						<label for="total">Total</label>
  						<input type="number" class="form-control" name="total" id="total" placeholder="Total Harga"
  							require />
+						<input type="number" class="form-control" name="sebelum_diskon" id="sebelum_diskon" />
  					</div>
  					<div class="modal-footer">
  						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
