@@ -143,41 +143,50 @@
                                         </select>
  									</div>
  								</div>
- 								<div class="form-group diskon_pel">
+ 								<!-- <div class="form-group diskon_pel">
  									<label class="col-md-3 col-xs-12 control-label">Diskon</label>
  									<div class="col-md-6 col-xs-12">
  										<input type="text" name="diskon" id="diskon" value="<?= $datatrx->diskon;?>"
  											class="form-control" onchange="hitung()">
  									</div>
  								</div>
-                                <script>
-                                    $(document).ready(function(){
-                                        $('.diskon_pel').hide();
-                                    });
-                                        $('#jenis_customer').on('change', function() {
-                                            if(this.value=="Umum"){
-                                                $('.diskon_pel').hide();
-                                                $('#diskon').val(0);
-                                                hitung();
-                                            }else{
-                                                $('.diskon_pel').show();
-                                            }
-                                        });
-                                function hitung(){
-                                    var total_transaksi = parseInt($("#total_transaksi").val());
-                                    var diskon = parseInt($("#diskon").val());
-                                    var hasil = total_transaksi - diskon;
-                                    console.log(hasil);
-                                    $("#dibayar").val(hasil);
-                                }
-                                </script>
+                                 -->
  								<div class="form-group">
  									<label class="col-md-3 col-xs-12 control-label">Jumlah Bayar</label>
  									<div class="col-md-6 col-xs-12">
- 										<input type="text" name="dibayar" id="dibayar" value="<?= $datatrx->dibayar;?>"
+ 										<input type="text" name="dibayar" id="dibayar" onchange="hitung()" 
  											class="form-control">
  									</div>
  								</div>
+                                <script>
+                                    // $(document).ready(function(){
+                                    //     $('.diskon_pel').hide();
+                                    // });
+                                    //     $('#jenis_customer').on('change', function() {
+                                    //         if(this.value=="Umum"){
+                                    //             $('.diskon_pel').hide();
+                                    //             $('#diskon').val(0);
+                                    //             hitung();
+                                    //         }else{
+                                    //             $('.diskon_pel').show();
+                                    //         }
+                                    //     });
+                                function hitung(){
+                                    var total_transaksi = parseInt($("#total_transaksi").val());
+                                    var dibayar = parseInt($("#dibayar").val());
+                                    var hasil = dibayar - total_transaksi;
+                                    console.log(hasil);
+                                    $('#kembali').val(hasil);
+                                    
+                                }
+                                </script>
+                            <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">Kembali</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" name="kembali" id="kembali"
+                                            value="<?= $datatrx->kembali ?>" class="form-control">
+                                    </div>
+                                </div>    
 
  							</div>
  							<!-- </div> -->
