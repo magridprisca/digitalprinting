@@ -66,34 +66,33 @@
                                     <table class="table datatable">
                                         <thead>
                                             <tr>
-                                                <th>Nomor</th>
+                                                <th>No</th>
                                                 <th>Nama Barang</th>
-                                                <th>Panjang</th>
-                                                <th>Lebar</th>
-                                                <th>Satuan</th>
+                                                <th>Jenis</th>
+                                                <th>Ukuran</th>
                                                 <th>Jumlah Barang</th>
                                                 <th>Tanggal Diterima</th>
                                                 <th>Supplier</th>
-                                                <th>Username</th>
+                                                <th>Penerima</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-										<?php foreach ($databarang as $key) { ?>
+										<?php $i=1; foreach ($databarang as $key) { ?>
                                             <tr>
-                                                <td><?php echo $key->id_barang;?></td>
+                                                <td><?php echo $i;?></td>
                                                 <td><?php echo $key->nama_barang;?></td>
-                                                <td><?php echo $key->panjang;?></td>
-                                                <td><?php echo $key->lebar;?></td>
-                                                <td><?php echo $key->satuan;?></td>
-                                                <td><?php echo $key->jml_barang;?></td>
+                                                <td><?php echo $key->jenis_barang;?></td>
+                                                <td><?php echo $key->panjang." x ".$key->lebar." cm";?></td>
+                                                <td><?php echo $key->jml_barang." ".$key->satuan;?></td>
                                                 <td><?php echo $key->tgl_diterima;?></td>
                                                 <td><?php echo $key->supplier;?></td>
                                                 <td><?php echo $key->username;?></td>
-												<td><a href="<?=site_url()?>/stok/add_stok/<?php echo "$key->id_barang"?>" ><span class="fa fa-plus"></a>&nbsp&nbsp<a href="<?=site_url()?>/barang/update_barang/<?php echo "$key->id_barang"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
+												<td><?php if ($key->jml_barang>0){?><a href="<?=site_url()?>/stok/add_stok/<?php echo "$key->id_barang"?>" ><span class="fa fa-plus"></a><?php } ?>&nbsp&nbsp
+                                                <a href="<?=site_url()?>/barang/update_barang/<?php echo "$key->id_barang"?>" ><span class="fa fa-edit"></a>&nbsp&nbsp
 												<a href="<?=site_url()?>/barang/del_barang/<?php echo "$key->id_barang"?>" onclick="return doconfirm();"><span class="fa fa-trash-o"></a></td>
                                             </tr>
-											<?php }?>
+											<?php $i++; }?>
                                     </table>
                                 </div>
                             </div>

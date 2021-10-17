@@ -28,7 +28,7 @@
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>                    
-                    <li class="active">Tambah User</li>
+                    <li class="active">Tambah Barang</li>
                 </ul>
                 <!-- END BREADCRUMB --> 
                 
@@ -61,12 +61,35 @@
                                             <span class="help-block">Nama Barang</span>
                                         </div>
                                     </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Jenis Barang</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_barang" id="exampleRadios1" value="Banner" checked>
+                                                    <label class="form-check-label" for="exampleRadios1">
+                                                        Banner
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_barang" id="exampleRadios2" value="Kertas">
+                                                    <label class="form-check-label" for="exampleRadios2">
+                                                        Kertas
+                                                    </label>
+                                                </div>
+                                            </div>                                            
+                                            <span class="help-block">Pilih Jenis Barang</span>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Panjang</label>
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="panjang" class="form-control"/>
+                                                <input type="number" name="panjang" class="form-control"/>
+                                                <span class="input-group-addon">cm</span>
                                             </div>                                            
                                             <span class="help-block">Panjang</span>
                                         </div>
@@ -76,9 +99,20 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="lebar" class="form-control"/>
+                                                <input type="number" name="lebar" class="form-control"/>
+                                                <span class="input-group-addon">cm</span>
                                             </div>                                            
                                             <span class="help-block">Lebar</span>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Barang</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="number" name="jml_barang" class="form-control"/>
+                                            </div>                                            
+                                            <span class="help-block">Jumlah Barang</span>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -89,16 +123,6 @@
                                                 <input type="text" name="satuan" class="form-control"/>
                                             </div>                                            
                                             <span class="help-block">Satuan</span>
-                                        </div>
-                                    </div>
-									<div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Jumlah Barang</label>
-                                        <div class="col-md-6 col-xs-12">                                            
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="jml_barang" class="form-control"/>
-                                            </div>                                            
-                                            <span class="help-block">Jumlah Barang</span>
                                         </div>
                                     </div>
 									<div class="form-group">
@@ -124,12 +148,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-3 col-xs-12 control-label">Username</label>
+                                        <label class="col-md-3 col-xs-12 control-label">Penerima</label>
                                         <div class="col-md-6 col-xs-12">   
                                                 <?php $username=$this->session->userdata('username'); ?>
                                             <input type="hidden" name="username" value="<?php echo $username ?>">
                                                 <!-- <option value="">Pilih username terdaftar</option> -->
-                                                <?php echo $username ?>
+                                                          
+                                            <span class="help-block"><?php echo $username ?></span>
                                             
                                             <!-- <span class="help-block">Daftar Username</span> -->
                                         </div>

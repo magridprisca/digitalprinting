@@ -7,6 +7,7 @@ class Barang extends CI_Controller {
     {
         parent::__construct();
         $this->cek_sesi();
+        date_default_timezone_set("Asia/Jakarta");
         $this->load->model('user_model');
         $this->load->model('barang_model');
     }
@@ -21,8 +22,8 @@ class Barang extends CI_Controller {
     }
 
     public function add_process(){
-        // $this->form_validation->set_rules('id_barang', 'ID Barang', 'required');
         $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
+        $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required');
         $this->form_validation->set_rules('panjang', 'Panjang', 'required');
         $this->form_validation->set_rules('lebar', 'Lebar', 'required');
         $this->form_validation->set_rules('satuan', 'Satuan', 'required');
@@ -35,8 +36,8 @@ class Barang extends CI_Controller {
             echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Barang/add_barang').'";</script>';
 
         } else {
-            // $id_barang = $this->input->post('id_barang');
             $nama_barang = $this->input->post('nama_barang');
+            $jenis_barang = $this->input->post('jenis_barang');
             $panjang = $this->input->post('panjang');
             $lebar = $this->input->post('lebar');
             $satuan = $this->input->post('satuan');
@@ -45,29 +46,21 @@ class Barang extends CI_Controller {
             $supplier = $this->input->post('supplier');
             $username = $this->input->post('username');
 
-            // echo $tgl_diterima;
-            // echo $supplier;
-            // echo $username;
-            // echo $satuan;
-            // echo $panjang;
-            // echo $lebar;
-            // echo $nama_barang;
-            // exit();
-
             $data = [
-                // 'id_barang' => $id_barang,
                 'nama_barang' => $nama_barang,
+                'jenis_barang' => $jenis_barang,
                 'panjang' => $panjang,
                 'lebar' => $lebar,
                 'satuan' => $satuan,
                 'jml_barang' => $jml_barang,
+                'jml_beli' => $jml_beli,
                 'tgl_diterima' => $tgl_diterima,
                 'supplier' => $supplier,
-                'username' => $username
+                'username' => $username,
+                'date_created' => date("Y-m-d h:i:s")
             ];
             $insert = $this->barang_model->create($data);
             if($insert){
-                // redirect('Admin/view_barang');
                 echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Barang/view_barang').'";</script>';
             }else{
                 echo '<script>alert("Gagal menyimpan data.");window.location.href="'.site_url('/Barang/add_barang').'";</script>';
@@ -90,6 +83,7 @@ class Barang extends CI_Controller {
     
     public function update_process(){
         $this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
+        $this->form_validation->set_rules('jenis_barang', 'Jenis Barang', 'required');
         $this->form_validation->set_rules('panjang', 'Panjang', 'required');
         $this->form_validation->set_rules('lebar', 'Lebar', 'required');
         $this->form_validation->set_rules('satuan', 'Satuan', 'required');
@@ -101,10 +95,9 @@ class Barang extends CI_Controller {
             if ($this->form_validation->run() == FALSE) {
             $errors = $this->form_validation->error_array();
             echo '<script>alert("Periksa kembali inputan anda!");window.location.href="'.site_url('/Barang/update_barang/'.$id_barang).'";</script>';
-
-
         } else {
             $nama_barang = $this->input->post('nama_barang');
+            $jenis_barang = $this->input->post('jenis_barang');
             $panjang = $this->input->post('panjang');
             $lebar = $this->input->post('lebar');
             $satuan = $this->input->post('satuan');
@@ -114,6 +107,7 @@ class Barang extends CI_Controller {
             $username = $this->input->post('username');
             $data = [
                 'nama_barang' => $nama_barang,
+                'jenis_barang' => $jenis_barang,
                 'panjang' => $panjang,
                 'lebar' => $lebar,
                 'satuan' => $satuan,

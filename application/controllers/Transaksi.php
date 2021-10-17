@@ -7,6 +7,7 @@ class Transaksi extends CI_Controller {
     {
         parent::__construct();
         $this->cek_sesi();
+        date_default_timezone_set("Asia/Jakarta");
         $this->load->model('transaksi_model');
         $this->load->model('detail_model');
         $this->load->model('pelanggan_model');
@@ -52,6 +53,7 @@ class Transaksi extends CI_Controller {
 				'username' => $username,
 				'tgl_transaksi' => $tgl_transaksi,
 				'id_customer' => $id_customer,
+                'date_created' => date("Y-m-d h:i:s")
 			];
 			$insert = $this->transaksi_model->create($data);
 
@@ -89,6 +91,8 @@ class Transaksi extends CI_Controller {
 
 		} else {
 			$id_transaksi = $this->input->post('id_transaksi');
+			$nama_file = $this->input->post('nama_file');
+			$jenis_brg = $this->input->post('jenis');
             $id_stok = $this->input->post('id_stok');
             $panjang = $this->input->post('panjang');
 			$lebar = $this->input->post('lebar');
@@ -99,6 +103,8 @@ class Transaksi extends CI_Controller {
 			
 			$data = [
 				'id_transaksi' => $id_transaksi,
+                'nama_file' => $nama_file,
+                'jenis_brg' => $jenis_brg,
                 'id_stok' => $id_stok,
                 'panjang' => $panjang,
 				'lebar' => $lebar,
@@ -106,6 +112,7 @@ class Transaksi extends CI_Controller {
 				'harga_detail' => $harga_detail,
 				'jasa_design' => $jasa_design,
 				'total_detail' => $total,
+                'date_created' => date("Y-m-d h:i:s")
 			];
 			$insert = $this->detail_model->create($data);
 
@@ -126,6 +133,11 @@ class Transaksi extends CI_Controller {
 
     }
     
+    function del_detail($id_detail,$id_transaksi){
+        $insert = $this->detail_model->delete($id_detail);
+        redirect('Transaksi/add_order2/'.$id_transaksi);
+    }
+
     function del_order($id_transaksi){
         $insert = $this->transaksi_model->delete($id_transaksi);
         redirect('transaksi/view_order');

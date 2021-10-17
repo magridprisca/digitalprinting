@@ -7,7 +7,7 @@ class Stok extends CI_Controller {
     {
         parent::__construct();
         $this->cek_sesi();
-        
+        date_default_timezone_set("Asia/Jakarta");
         $this->load->model('stok_model');
         $this->load->model('barang_model');
 
@@ -39,32 +39,70 @@ class Stok extends CI_Controller {
         $this->form_validation->set_rules('lebar_stok', 'Lebar Stok', 'required');
         $this->form_validation->set_rules('satuan_stok', 'Satuan Stok', 'required');
         $this->form_validation->set_rules('jml_stok', 'Jumlah Stok', 'required');
+        $this->form_validation->set_rules('jml_barang', 'Jumlah Barang', 'required');
         $this->form_validation->set_rules('harga_stok', 'Harga Stok', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            $errors = $this->form_validation->error_array();
-            echo '<script>alert("Gagal menyimpan data!");window.location.href="'.site_url('/Stok/add_stok').'";</script>';
+            echo validation_errors(); 
+            // echo '<script>alert("Periksa Kembali Form anda! '.$errors.'");window.location.href="'.site_url('/Stok/add_stok/'.$this->input->post('id_barang')).'";</script>';
 
         } else {
             $nama_stok = $this->input->post('nama_stok');
+            $jenis_stok = $this->input->post('jenis_stok');
             $panjang_stok = $this->input->post('panjang_stok');
             $lebar_stok = $this->input->post('lebar_stok');
+            $satuan_barang = $this->input->post('satuan_barang');
+            $jml_barang = $this->input->post('jml_barang');
             $satuan_stok = $this->input->post('satuan_stok');
             $jml_stok = $this->input->post('jml_stok');
+            $potong = $this->input->post('potong');
             $harga_stok = $this->input->post('harga_stok');
             $id_barang = $this->input->post('id_barang');
 
-            $data = [
-                'id_barang' => $id_barang,
-                'nama_stok' => $nama_stok,
-                'panjang_stok' => $panjang_stok,
-                'lebar_stok' => $lebar_stok,
-                'satuan_stok' => $satuan_stok,
-                'jml_stok' => $jml_stok,
-                'harga_stok' => $harga_stok
-                
-            ];
-            $insert = $this->stok_model->create($data);
+            if($jenis_stok=="Banner"){
+                if($potong==1){
+                    $lebar = array(106, 107, 107);
+                }else if($potong==2){
+                    $lebar = array(160, 160);
+                }else if($potong==3){
+                    $lebar = array(210, 110);
+                }else if($potong==4){
+                    $lebar = array(260, 60);
+                }
+
+                foreach ($lebar as $lebar_value) {
+                    $data = [
+                        'id_barang' => $id_barang,
+                        'nama_stok' => $nama_stok,
+                        'panjang_stok' => $panjang_stok,
+                        'lebar_stok' => $lebar_value,
+                        'satuan_barang' => $satuan_barang,
+                        'jml_barang' => $jml_barang,
+                        'satuan_stok' => $satuan_stok,
+                        'jml_stok' => $jml_stok,
+                        'potong' => $potong,
+                        'harga_stok' => $harga_stok,
+                        'date_created' => date("Y-m-d h:i:s")
+                    ];
+                    $insert = $this->stok_model->create($data);
+                }
+
+            }else{
+                $data = [
+                    'id_barang' => $id_barang,
+                    'nama_stok' => $nama_stok,
+                    'panjang_stok' => $panjang_stok,
+                    'lebar_stok' => $lebar_stok,
+                    'satuan_barang' => $satuan_barang,
+                    'jml_barang' => $jml_barang,
+                    'satuan_stok' => $satuan_stok,
+                    'jml_stok' => $jml_stok,
+                    'potong' => $potong,
+                    'harga_stok' => $harga_stok,
+                    'date_created' => date("Y-m-d h:i:s")
+                ];
+                $insert = $this->stok_model->create($data);
+            }
             if($insert){
                 // redirect('Admin/view_user');
                 echo '<script>alert("Sukses! Anda berhasil menyimpan data.");window.location.href="'.site_url('/Stok/view_stok').'";</script>';

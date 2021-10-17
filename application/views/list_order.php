@@ -51,12 +51,17 @@
 				<!-- START WIDGETS -->                    
                     <div class="row">
 					
-						<div class="col-md-12">
+						<div class="col-md-4">
                             <div class="widget widget-success widget-item-icon" onclick="location.href='<?=site_url()?>/Transaksi/add_order';">
-                                <div class="widget-big-int"><span class="num-count">Order Baru</span></div>   
-                                <div class="widget-controls">
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
-                                </div>                            
+                                <!-- <div class="widget-big-int"><span class="num-count">Order Baru</span></div>    -->
+                                <div class="widget-item-left">
+                                    <span class="fa fa-plus"></span>
+                                </div>
+                                <div class="widget-data">
+                                    <div class="widget-int num-count">Klik</div>
+                                    <div class="widget-title">Disini</div>
+                                    <div class="widget-subtitle">Untuk Membuat Order Baru</div>
+                                </div>                         
                             </div>                        
 
                         </div>

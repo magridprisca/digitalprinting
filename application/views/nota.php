@@ -76,6 +76,10 @@
                                         <label class="col-md-3">Customer</label>
                                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_customer;?></label>
                                     </div>
+                                    <div class="row">
+                                        <label class="col-md-3">No HP</label>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->telp_customer;?></label>
+                                    </div>
                                     
                                     <div class="form-group" id="detail_transaksi">
                                         <h4 align="center">Detail Order</h4>  

@@ -76,7 +76,11 @@
                                         <div class="col-md-6 col-xs-12">                                            
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                                <input type="text" name="keterangan" class="form-control"/>
+                                                <select name="jenis_customer" id="jenis_customer" class="form-control">
+                                                    <option value="Umum">Umum</option>
+                                                    <option value="Instansi">Instansi</option>
+                                                    <option value="Reseler">Reseler</option>
+                                                </select>
                                             </div>                                            
                                             <span class="help-block">Keterangan</span>
                                         </div>
