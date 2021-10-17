@@ -63,6 +63,11 @@
 
                                     <h2 align="center">NOTA PEMBAYARAN</h2>  
                                     <h3 align="center">Amanah Digital printing</h3>  
+                                    <div>
+                                        <h5 align="center"><?= $datatrx->nota ?></h5>
+                                        
+                                    </div>
+                                    
                                     <hr>
                                     <div class="row">
                                         <label class="col-md-3">Tanggal Order</label>
@@ -146,6 +151,10 @@
                                         </label>
                                     </div>
                                     <?php } ?>
+                                    <div class="row">
+                                        <label class="col-md-3">Kembali</label>&nbsp&nbsp&nbsp&nbsp
+                                        <label class="col-md-6">: <?= $datatrx->kembali ?></label>
+                                    </div>
                                 </div> 
                             </div>
                         </div>

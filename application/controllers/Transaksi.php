@@ -227,7 +227,8 @@ class Transaksi extends CI_Controller {
     
     public function bayar_process(){
         $this->form_validation->set_rules('total_transaksi', 'Total Bayar', 'required');
-		$this->form_validation->set_rules('dibayar', 'Dibayar', 'required');
+        $this->form_validation->set_rules('dibayar', 'Dibayar', 'required');
+		$this->form_validation->set_rules('kembali', 'Kembali', 'required');
         if ($this->form_validation->run() == FALSE) {
 			$errors = $this->form_validation->error_array();
             echo '<script>alert("Gagal menyimpan pembayaran! pastikan isi sudah sesuai");window.location.href="'.site_url('/Transaksi/add_order/'.$id_transaksi).'";</script>';
@@ -237,14 +238,18 @@ class Transaksi extends CI_Controller {
 			$total_transaksi = $this->input->post('total_transaksi');
 			$jenis_customer = $this->input->post('jenis_customer');
 			$diskon = $this->input->post('diskon');
-			$dibayar = $this->input->post('dibayar');
+            $dibayar = $this->input->post('dibayar');
+			$kembali = $this->input->post('kembali');
+            $nota = $this->input->post('nota');
 			
 			$data = [
 				'total_transaksi' => $total_transaksi,
-				'dibayar' => $dibayar,
+                'dibayar' => $dibayar,
+				'kembali' => $kembali,
 				'jenis_customer' => $jenis_customer,
 				'diskon' => $diskon,
 				'tgl_bayar' => date('Y-m-d h:i:s'),
+                'nota' => $nota,
 				// 'ket_bayar' => 1,
 			];
 			$insert = $this->transaksi_model->update($id_transaksi,$data);
