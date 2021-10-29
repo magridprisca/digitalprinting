@@ -1,49 +1,67 @@
-            <?php $this->load->view('header');?>
-			<script>
-				function printDiv(panelprint) {
-				var printContents = document.getElementById(panelprint).innerHTML;
-				var originalContents = document.body.innerHTML;
 
-				document.body.innerHTML = printContents;
-				window.print();
-
-				document.body.innerHTML = originalContents;
-}
-			</script>
-            <div class="page-content">
-                
-                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                    <li class="xn-icon-button">
-                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-                    </li>
-                    <li class="xn-search">
-                        <form role="form">
-                            <input type="text" name="search" placeholder="Search..."/>
-                        </form>
-                    </li>   
-                    <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
-                    </li> 
-                    
-                </ul>
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
-                    <li class="active">Nota</li>
-                </ul>
-                <div class="page-content-wrap">
-                    
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default" name="panelprint">
-
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Form</strong> Riwayat Transaksi </h3>
-                                    <div class="pull-right">                                                                                    
-                                    <button class="btn btn-default" onclick="printDiv('printableArea')"><span class="fa fa-print"></span> Cetak Halaman</button>
-                                    </div>
-                                </div>
-                                <div class="panel-body"  id="printableArea">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Halaman Print A4</title>
+</head>
+<style type="text/css">
+/* Kode CSS Untuk PAGE ini dibuat oleh http://jsfiddle.net/2wk6Q/1/ */
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        font: 12pt "Tahoma";
+    }
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .page {
+        width: 105mm;
+        min-height: 148mm;
+        padding: 10mm;
+        margin: 10mm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .subpage {
+        padding: 1cm;
+        border: 5px red solid;
+        /*height: 257mm;*/
+        outline: 2cm #FFEAEA solid;
+    }
+    
+    @page {
+        size: A6;
+        margin: 0;
+    }
+    @media print {
+        html, body {
+            width: 105mm;
+            height: 148mm;        
+        }
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+        }
+    }
+</style>
+<body>
+<div class="book">
+    <div class="page">
+        <div class="subpage">
+    
                                     <h2 align="center">NOTA PEMBAYARAN</h2>  
                                     <h3 align="center">Amanah Digital printing</h3>  
                                     <div>
@@ -53,12 +71,12 @@
                                     
                                     <hr>
                                     <div class="row">
-                                        <label class="col-md-3">Tanggal Order</label>
-                                        <label class="col-md-6">: <?= $datatrx->tgl_transaksi ?></label>
+                                        <label >Tanggal Order</label>
+                                        <label >: <?= $datatrx->tgl_transaksi ?></label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3">Username</label>
-                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label class="col-md-6">: <?= $datatrx->nama_lengkap;?></label>
+                                        <label>Username</label>
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<label>: <?= $datatrx->nama_lengkap;?></label>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3">Customer</label>
@@ -116,13 +134,14 @@
                                         <label class="col-md-3">Kembali</label>&nbsp&nbsp&nbsp&nbsp
                                         <label class="col-md-6">: <?php if($datatrx->keterangan=="Instansi"){ echo "0"; } else {echo $datatrx->kembali;}?></label>
                                     </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>                               
-            </div>            
-			<?php $this->load->view('admin/footer');?>
+        </div>    
+    </div>
+ 
+    <div class="page">
+        <div class="subpage">Page 2/2</div>    
+    </div>
 
-
+</div>
+</body>
+</html>
+<script type="text/javascript">window.print();</script>

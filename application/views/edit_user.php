@@ -88,7 +88,8 @@
                                         <div class="col-md-6 col-xs-12">   
                                             <select name="level" class="select">
                                                 <option value="Admin" <?php if($datauser->level=="Admin"){ echo "selected"; } ?>>Admin</option>
-                                                <option value="User" <?php if($datauser->level=="User"){ echo "selected"; } ?>>User</option>
+                                                <option value="Desain" <?php if($datauser->level=="Desain"){ echo "selected"; } ?>>Desain</option>
+                                                <option value="Kasir" <?php if($datauser->level=="Kasir"){ echo "selected"; } ?>>Kasir</option>
                                             </select>
                                             <span class="help-block">Jenis Login</span>
                                         </div>

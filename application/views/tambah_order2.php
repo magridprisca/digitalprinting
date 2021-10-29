@@ -205,8 +205,11 @@
  							if (jenis == "Banner") {
  								panjang = panjang / 100;
  								lebar = lebar / 100;
- 								var hasil = (panjang * lebar * jumlah * harga) + jasa_design + biaya_lain;
- 								var hasil_sebelumdiskon = (panjang * lebar * jumlah * harga_sebelumdiskon) + jasa_design + biaya_lain;
+                                var harga_hasil =Math.ceil((panjang * lebar * harga)/1000);
+                                // pembulatan harga 1000 ke atas
+                                console.log(panjang * lebar * harga);
+ 								var hasil = (harga_hasil* 1000 * jumlah ) + jasa_design + biaya_lain;
+ 								var hasil_sebelumdiskon = (harga_hasil * harga_sebelumdiskon) + jasa_design + biaya_lain;
 
  							} else {
  								var hasil = (jumlah * harga) + jasa_design + biaya_lain;
@@ -260,7 +263,7 @@
  					<div class="form-group">
  						<label for="jasa_design">Jasa Design</label>
  						<input type="number" class="form-control" name="jasa_design" id="jasa_design"
- 							onchange="hitung()" placeholder="Biaya Jasa Design" require />
+ 							onchange="hitung()" value="0" placeholder="Biaya Jasa Design" require />
  					</div>
                     <div class="form-group">
                         <label for="jenis">Lain-lain</label>
@@ -276,7 +279,7 @@
  						<label for="total">Total</label>
  						<input type="number" class="form-control" name="total" id="total" placeholder="Total Harga"
  							require />
-						<input type="number" class="form-control" name="sebelum_diskon" id="sebelum_diskon" />
+						<input type="hidden" class="form-control" name="sebelum_diskon" id="sebelum_diskon" />
  					</div>
  					<div class="modal-footer">
  						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

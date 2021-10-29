@@ -98,7 +98,8 @@
                                         <div class="col-md-6 col-xs-12">   
                                             <select name="level" class="select">
                                                 <option value="Admin">Admin</option>
-                                                <option value="User">User</option>
+                                                <option value="Desain">Desain</option>
+                                                <option value="Kasir">Kasir</option>
                                             </select>
                                             <span class="help-block">Jenis Login</span>
                                         </div>

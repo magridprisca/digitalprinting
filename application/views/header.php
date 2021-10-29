@@ -57,6 +57,9 @@
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Menu</li>
+                    <?php 
+                    $level=$this->session->userdata('level');
+                    if($level=="Admin"){ ?>
                     <li class="active">
                         <a href="<?=site_url()?>/Admin"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>
@@ -111,7 +114,72 @@
                            <li><a href="<?=site_url()?>/Laporan/view_laporanBulanan"><span class="fa fa-list-ul"></span> Bulanan </a></li>
                         </ul>
                     </li>
-
+                    <?php } 
+                    else if($level=="Kasir"){ ?>
+                    <li class="active">
+                        <a href="<?=site_url()?>/Admin"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                    </li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Customer</span></a>
+                        <ul>
+                           <li><a href="<?=site_url()?>/Pelanggan/add_pelanggan"><span class="fa fa-arrows-h"></span> Tambah Customer</a></li>
+                           <li><a href="<?=site_url()?>/Pelanggan/view_pelanggan"><span class="fa fa-list-ul"></span> List Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-arrow-down"></span> <span class="xn-text">Data Barang Masuk</span></a>
+                        <ul>
+                           <li><a href="<?=site_url()?>/Barang/add_barang"><span class="fa fa-arrows-h"></span> Tambah Barang</a></li>
+                           <li><a href="<?=site_url()?>/Barang/view_barang"><span class="fa fa-list-ul"></span> List Barang</a></li>
+                        </ul>
+                    </li>
+                     <li class="xn-openable">
+                        <a href="#"><span class="fa fa-table"></span> <span class="xn-text">Stok Barang</span></a>
+                        <ul>
+                           <!-- <li><a href="<?=site_url()?>/Stok/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li> -->
+                           <li><a href="<?=site_url()?>/Stok/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
+                        </ul>
+                    </li>
+                     <li class="xn-openable">
+                        <a href="<?=site_url()?>/progress/index"><span class="fa fa-exchange"></span> <span class="xn-text">Transaksi Penjualan</span></a> 
+                        <ul>
+                           <li><a href="<?=site_url()?>/Transaksi/view_pembayaran"><span class="fa fa-money"></span> Pembayaran</a></li>
+                           <li><a href="<?=site_url()?>/Transaksi/view_riwayat"><span class="fa fa-history"></span> Riwayat Transaksi</a></li>
+                        </ul>
+                     </li>
+                    <?php } 
+                    else if($level=="Desain"){ ?>
+                    <li class="active">
+                        <a href="<?=site_url()?>/Admin"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                    </li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Customer</span></a>
+                        <ul>
+                           <li><a href="<?=site_url()?>/Pelanggan/add_pelanggan"><span class="fa fa-arrows-h"></span> Tambah Customer</a></li>
+                           <li><a href="<?=site_url()?>/Pelanggan/view_pelanggan"><span class="fa fa-list-ul"></span> List Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-arrow-down"></span> <span class="xn-text">Data Barang Masuk</span></a>
+                        <ul>
+                           <li><a href="<?=site_url()?>/Barang/add_barang"><span class="fa fa-arrows-h"></span> Tambah Barang</a></li>
+                           <li><a href="<?=site_url()?>/Barang/view_barang"><span class="fa fa-list-ul"></span> List Barang</a></li>
+                        </ul>
+                    </li>
+                     <li class="xn-openable">
+                        <a href="#"><span class="fa fa-table"></span> <span class="xn-text">Stok Barang</span></a>
+                        <ul>
+                           <!-- <li><a href="<?=site_url()?>/Stok/add_stok"><span class="fa fa-arrows-h"></span> Tambah Stok Barang</a></li> -->
+                           <li><a href="<?=site_url()?>/Stok/view_stok"><span class="fa fa-list-ul"></span> List Stok Barang</a></li>
+                        </ul>
+                    </li>
+                     <li class="xn-openable">
+                        <a href="<?=site_url()?>/progress/index"><span class="fa fa-exchange"></span> <span class="xn-text">Transaksi Penjualan</span></a> 
+                        <ul>
+                           <li><a href="<?=site_url()?>/Transaksi/view_order"><span class="fa fa-shopping-cart"></span> Order</a></li>
+                        </ul>
+                     </li>
+                    <?php } ?>
 
 					<!-- <li >
                         <a href="<?=site_url()?>/progress/index"><span class="fa fa-list-alt"></span> <span class="xn-text">Data Pelanggan</span></a> 
